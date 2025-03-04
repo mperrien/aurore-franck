@@ -1,9 +1,18 @@
 ---
-import Layout from '@/layouts/Layout.astro';
+import Layout from "@/layouts/Layout.astro";
 
 import Hero from "@/components/home/Hero.astro";
+import Journey from "@/components/home/Journey.astro";
+import Book from "@/components/home/Book.astro";
+import Authors from "@/components/home/Authors.astro";
 ---
 
-<Layout title="Regarder ensemble pour voir autrement" description="Un livre à quatre mains par Aurore Stevens et Franck Garden-Brèche.">
-	<Hero />
+<Layout
+  title="Regarder ensemble pour voir autrement"
+  description="Un livre à quatre mains par Aurore Stevens et Franck Garden-Brèche."
+>
+  <Hero />
+  <Journey />
+  <Book />
+  <Authors />
 </Layout>

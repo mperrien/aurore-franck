@@ -1,1 +1,11 @@
-<div class="homeHero">hero</div>
+---
+import { Image } from "astro:assets";
+
+import heroImage from "@/assets/hero-image.jpg";
+---
+
+<section class="homeHero">
+  <div class="container">
+    <Image src={heroImage} alt="La plage des Bas-Sablons à Saint-Malo" />
+  </div>
+</section>

@@ -1,8 +1,8 @@
 :root {
   // Typography
-  --body-font: "Triodion", serif;
-  --display-font: "Triodion", serif;
-  --base-font-size: 1.6rem;
+  --body-font: ui-serif, serif;
+  --display-font: "Triodion", ui-serif, serif;
+  --base-font-size: 2rem;
 
   --text-color: var(--grey-700);
   --text-color-bright: var(--grey-800);
