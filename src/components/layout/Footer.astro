@@ -1,9 +1,27 @@
 <footer class="footer">
-  <div class="container">Footer</div>
+  <div class="container">
+    <nav class="footer__links">
+      <a href="/mentions-legales/">Mentions légales</a>
+    </nav>
+  </div>
 </footer>
 
 <style lang="scss">
   .footer {
+    margin-top: auto;
+    padding-top: var(--space-small);
+    padding-bottom: var(--space-medium);
+
     font-family: var(--ui-font);
+
+    &__links {
+      display: flex;
+      justify-content: center;
+
+      a {
+        color: var(--grey-500);
+        font-size: 1.4rem;
+      }
+    }
   }
 </style>
