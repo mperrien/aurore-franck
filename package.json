@@ -9,6 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.4.1"
+    "@fontsource/triodion": "^5.2.5",
+    "astro": "^5.4.1",
+    "astro-vscode": "^2.15.4",
+    "sass": "^1.83.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }
