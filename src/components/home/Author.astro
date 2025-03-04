@@ -25,9 +25,7 @@ if (!images[`/src/assets/${author.image}`])
   <div class="author__image">
     <Image src={images[`/src/assets/${author.image}`]()} alt={author.name} />
   </div>
-  <div class="author__content">
-    <p>{author.content}</p>
-  </div>
+  <div class="author__content" set:html={author.content} />
 </article>
 
 <style lang="scss">
