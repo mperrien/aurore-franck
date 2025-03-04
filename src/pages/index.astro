@@ -11,8 +11,24 @@ import Authors from "@/components/home/Authors.astro";
   title="Regarder ensemble pour voir autrement"
   description="Un livre à quatre mains par Aurore Stevens et Franck Garden-Brèche."
 >
-  <Hero />
-  <Journey />
-  <Book />
-  <Authors />
+  <main class="home">
+    <Hero />
+    <Journey />
+    <Book />
+    <Authors />
+  </main>
 </Layout>
+
+<style lang="scss" is:global>
+  .home {
+    > section {
+      min-height: 100vh;
+      padding-top: var(--space-large);
+      padding-bottom: var(--space-large);
+
+      & + .section {
+        margin-top: var(--space-large);
+      }
+    }
+  }
+</style>

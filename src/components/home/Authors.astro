@@ -19,9 +19,20 @@ const AUTHORS = [
 
 <section class="authors">
   <div class="container">
-    <h2>Qui sommes-nous&nbsp;?</h2>
+    <h2 class="text-center">Qui sommes-nous&nbsp;?</h2>
     <div class="authors__cards">
       {AUTHORS.map((a) => <Author author={a} />)}
     </div>
   </div>
 </section>
+
+<style lang="scss">
+  .authors {
+    &__cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-large);
+    }
+  }
+</style>

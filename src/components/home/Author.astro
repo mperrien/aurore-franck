@@ -22,6 +22,36 @@ if (!images[`/src/assets/${author.image}`])
 ---
 
 <article class="author">
-  <Image src={images[`/src/assets/${author.image}`]()} alt={author.name} />
-  <p>{author.content}</p>
+  <div class="author__image">
+    <Image src={images[`/src/assets/${author.image}`]()} alt={author.name} />
+  </div>
+  <div class="author__content">
+    <p>{author.content}</p>
+  </div>
 </article>
+
+<style lang="scss">
+  .author {
+    overflow: hidden;
+    width: 32rem;
+
+    background-color: white;
+    border-radius: var(--border-radius-m);
+    box-shadow: var(--box-shadow-diffuse);
+
+    &__image {
+      height: 32rem;
+
+      img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__content {
+      padding: var(--space-small);
+    }
+  }
+</style>

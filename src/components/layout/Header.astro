@@ -1,5 +1,47 @@
 <header class="header">
   <div class="container">
-    Header
+    <nav class="header__nav">
+      <a href="/" class="header__logo">
+        Aurore Stevens & Franck Garden-Brèche</a
+      >
+      <ul class="header__menu list-reset">
+        <li>
+          <a href="/contact/" class="button button--primary">Contact</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
+
+<style lang="scss">
+  .header {
+    padding-top: var(--space-small);
+    padding-bottom: var(--space-small);
+
+    font-family: var(--ui-font);
+
+    &__nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__logo {
+      font-family: var(--display-font);
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &:visited {
+        color: var(--text-color);
+      }
+    }
+
+    &__menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-small);
+    }
+  }
+</style>
