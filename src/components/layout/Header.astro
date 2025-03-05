@@ -2,11 +2,14 @@
   <div class="container">
     <nav class="header__nav">
       <a href="/" class="header__logo">
-        Aurore Stevens & Franck Garden-Brèche</a
+        Aurore Stevens & <br />Franck Garden-Brèche</a
       >
       <ul class="header__menu list-reset">
         <li>
-          <a href="/contact/" class="button button--primary">Nous contacter</a>
+          <a href="/contact/" class="button button--primary">
+            <span class="large">Nous&nbsp;c</span><span class="small">C</span
+            >ontact<span class="large">er</span>
+          </a>
         </li>
       </ul>
     </nav>
@@ -24,10 +27,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: var(--space-large);
     }
 
     &__logo {
       font-family: var(--display-font);
+
+      @media (min-width: 32rem) {
+        br {
+          display: none;
+        }
+      }
 
       &:hover {
         text-decoration: none;
@@ -42,6 +52,22 @@
       display: flex;
       align-items: center;
       gap: var(--space-small);
+
+      .button {
+        .large {
+          display: none;
+        }
+
+        @media (min-width: 40rem) {
+          .large {
+            display: inline;
+          }
+
+          .small {
+            display: none;
+          }
+        }
+      }
     }
   }
 </style>
