@@ -2,11 +2,77 @@
 import { Image } from "astro:assets";
 
 import heroImage from "@/assets/hero-image.jpg";
+import bookCover from "@/assets/emie-couverture.jpg";
 ---
 
 <section class="homeHero">
-  <div class="container">
+  <div class="homeHero__content container">
+    <h1>
+      Aurore Stevens et Franck Garden-Brèche<br /> vous invitent à découvrir leur
+      manuscrit Emi(e).
+    </h1>
+    <div class="homeHero__book">
+      <Image
+        src={bookCover}
+        alt="La couverture du livre Emi(e). Elle représente un ciel nuageux dans les tons roses. Au-dessus du titre, il est écrit 'Sois assurée que nous nous retrouverons...'"
+      />
+    </div>
+  </div>
+  <div class="homeHero__image">
     <Image src={heroImage} alt="La plage des Bas-Sablons à Saint-Malo" />
-    <h1>Regarder ensemble pour voir autrement</h1>
   </div>
 </section>
+
+<style lang="scss">
+  .homeHero {
+    position: relative;
+    min-height: unset;
+
+    &__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      height: 100%;
+      width: 100%;
+
+      img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__content {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-large);
+      padding-top: var(--space-large);
+      padding-bottom: var(--space-large);
+    }
+
+    h1 {
+      color: white;
+      font-family: var(--display-font);
+      font-size: 3.6rem;
+      text-align: center;
+      text-shadow: var(--box-shadow-sharp);
+    }
+
+    &__book {
+      overflow: hidden;
+
+      box-shadow: var(--box-shadow-diffuse);
+
+      img {
+        display: block;
+      }
+    }
+  }
+</style>
