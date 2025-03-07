@@ -1,0 +1,38 @@
+---
+import Author from "@/components/home/Author.astro";
+
+const AUTHORS = [
+  {
+    name: "Aurore Stevens",
+    content:
+      "<p><strong>Aurore Stevens</strong>, née en 1987 à Saint-Malo, réside près de Rennes.</p><p>Elle est rédactrice territoriale pour la fonction publique d’État.</p>",
+    image: "aurore-stevens.jpg",
+  },
+  {
+    name: "Franck Garden-Brèche",
+    content:
+      "<p><strong>Franck Garden-Brèche</strong>, né en 1964 à Saint-Étienne, réside à Saint-Malo.</p><p>Il est urgentiste et hypnothérapeute.</p>",
+    image: "franck-garden-breche.jpg",
+  },
+];
+---
+
+<section class="authors">
+  <div class="container">
+    <h2 class="text-center">Qui sommes-nous&nbsp;?</h2>
+    <div class="authors__cards">
+      {AUTHORS.map((a) => <Author author={a} />)}
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .authors {
+    &__cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-large);
+    }
+  }
+</style>

@@ -1,0 +1,73 @@
+<header class="header">
+  <div class="container">
+    <nav class="header__nav">
+      <a href="/" class="header__logo">
+        Aurore Stevens & <br />Franck Garden-Brèche</a
+      >
+      <ul class="header__menu list-reset">
+        <li>
+          <a href="/contact/" class="button button--primary">
+            <span class="large">Nous&nbsp;c</span><span class="small">C</span
+            >ontact<span class="large">er</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style lang="scss">
+  .header {
+    padding-top: var(--space-small);
+    padding-bottom: var(--space-small);
+
+    font-family: var(--ui-font);
+
+    &__nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-large);
+    }
+
+    &__logo {
+      font-family: var(--display-font);
+
+      @media (min-width: 32rem) {
+        br {
+          display: none;
+        }
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &:visited {
+        color: var(--text-color);
+      }
+    }
+
+    &__menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-small);
+
+      .button {
+        .large {
+          display: none;
+        }
+
+        @media (min-width: 40rem) {
+          .large {
+            display: inline;
+          }
+
+          .small {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+</style>

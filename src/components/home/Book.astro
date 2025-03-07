@@ -1,0 +1,164 @@
+<section class="homeBook">
+  <h2 class="text-center">Notre livre</h2>
+  <div class="bookWrapper container">
+    <div class="book text-justify">
+      <p>
+        13h20. Un après-midi de juillet sur la plage des Bas-Sablons à
+        Saint-Malo.
+      </p>
+      <p class="dialog">
+        &laquo;&nbsp;Franck... Et si on écrivait un livre&nbsp;?
+      </p>
+      <p class="dialog">&mdash;&nbsp;Hein&nbsp;?</p>
+      <p class="dialog">
+        &mdash;&nbsp;Oui, un livre&nbsp;! Ce serait une belle façon de
+        transmettre nos valeurs et d’exprimer ce qu’on a sur le cœur, tu ne
+        crois pas&nbsp;?
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;Tu me prends de court, mais... oui c’est une bonne idée.
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;Et puis, toi, tu as déjà écrit des livres, non&nbsp;?
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;Euh... &laquo;&nbsp;écrit des livres&nbsp;&raquo;, c’est
+        vite dit, mais on va dire que oui, c’est vrai. Mais écrire à deux&nbsp;,
+        ça ne doit pas être simple...
+      </p>
+      <p class="dialog">&mdash;&nbsp;On aime les défis pas vrai&nbsp;?</p>
+      <p class="dialog">&mdash;&nbsp;C’est vrai&nbsp;...</p>
+      <p class="dialog">&mdash;&nbsp;Allez chiche, on se lance&nbsp;?</p>
+      <p class="dialog">&mdash;&nbsp;OK, chiche.&nbsp;&raquo;</p>
+      <p>9 mois plus tard.</p>
+      <p class="dialog">&laquo;&nbsp;Franck&nbsp;?</p>
+      <p class="dialog">&mdash;&nbsp;Oui&nbsp;?</p>
+      <p class="dialog">&mdash;&nbsp;Je crois bien qu’on a fini.</p>
+      <p class="dialog">
+        &mdash;&nbsp;Tu es sûre&nbsp;? Certaine de toi&nbsp;? Parce que bon, tu
+        pourrais changer encore une énième phrase ici ou là, non&nbsp;? Voire
+        pire, UNE virgule... Avoue, c’est plus fort que toi&nbsp;!
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;Hahaha arrête&nbsp;! J’essaie juste d’être
+        rigoureuse&nbsp;. J’ai des éditeurs à convaincre moi&nbsp;. D’ailleurs,
+        je t&#39;ai déjà dit que je priais tous les soirs pour que notre
+        manuscrit soit retenu&nbsp;?
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;Non, mais maintenant que tu le dis, je reconnais que l’aide
+        d’une bonne âme serait la bienvenue...
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;Dis-moi, qu’est-ce que tu as pensé de cette aventure&nbsp;?
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;De cette aventure&nbsp;? Tu veux dire, en mettant de côté
+        tes nombreux &laquo;&nbsp;taquets&nbsp;&raquo; et TON sourcil froncé dès
+        que je propose une idée&nbsp;?
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;(Rires) Arrête, je t’ai dit&nbsp;! Ce n’est pas de ma
+        faute, mon côté émotionnel est parfois incontrôlable. Et puis, les
+        textes trop &laquo;&nbsp;gnangnan&nbsp;&raquo;, très peu pour moi&nbsp;!
+        Alors forcément, BIM, ça part tout seul. Avoue que c’est mérité&nbsp;:
+        fallait pas me chercher &nbsp;!
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;D’accord, c’est vrai que c’est mérité mais j’aime ce côté
+        piquant&nbsp;! Bon, pour répondre à ta question et plus sérieusement...
+        c’est sans doute l’une des plus belles expériences de ma vie. Et
+        toi&nbsp;?
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;Hummm pareil&nbsp;! Une expérience qui te change à
+        jamais...
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;Un grand merci à nous alors, tu veux bien&nbsp;?
+      </p>
+      <p class="dialog">
+        &mdash;&nbsp;Oh oui, un grand merci à nous deux... On l’a
+        fait&nbsp;!&nbsp;&raquo;
+      </p>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .homeBook {
+    .bookWrapper {
+      position: relative;
+
+      max-width: 110rem;
+
+      &::before,
+      &::after {
+        position: absolute;
+        bottom: var(--space-medium);
+        z-index: 3;
+
+        display: block;
+
+        transform: translate(-50%, 50%);
+      }
+
+      &::before {
+        content: "4";
+
+        left: 50%;
+      }
+
+      @media (width > 60rem) {
+        &::before {
+          left: 25%;
+        }
+
+        &::after {
+          content: "5";
+
+          left: 75%;
+        }
+      }
+    }
+
+    .book {
+      position: relative;
+
+      padding: var(--space-medium) var(--space-medium) var(--space-large);
+
+      background-color: white;
+      border-radius: var(--border-radius-m);
+      box-shadow: var(--box-shadow-diffuse);
+
+      @media (width > 60rem) {
+        column-count: 2;
+        column-gap: var(--space-large);
+
+        &::before {
+          content: "";
+
+          position: absolute;
+          top: 0;
+          left: 50%;
+
+          display: block;
+          height: 100%;
+          width: 0.1rem;
+
+          background-color: var(--grey-200);
+        }
+      }
+
+      p {
+        &.dialog {
+          margin-top: 0;
+        }
+
+        &:not([class]) + p.dialog {
+          margin-top: var(--space-small);
+        }
+      }
+    }
+  }
+</style>

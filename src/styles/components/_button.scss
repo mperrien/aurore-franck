@@ -1,0 +1,47 @@
+// Default accessibility styles for class-less buttons
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  &:not([class]):focus-visible {
+    outline: 0.2rem dotted blue;
+    outline-offset: 0.2rem;
+  }
+}
+
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+
+  border: none;
+  border-radius: 2rem;
+  box-shadow: var(--box-shadow-diffuse);
+  cursor: pointer;
+
+  font-family: var(--ui-font);
+  font-size: 1.4rem;
+
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    box-shadow: var(--box-shadow-sharp);
+    text-decoration: none;
+  }
+
+  &:active {
+    box-shadow: none;
+
+    transform: translateY(0.1rem);
+  }
+
+  &--primary {
+    background-color: var(--grey-800);
+
+    color: white;
+
+    &:hover,
+    &:visited {
+      color: white;
+    }
+  }
+}

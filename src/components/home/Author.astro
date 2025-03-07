@@ -1,0 +1,55 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  author: {
+    name: string;
+    content: string;
+    image: string;
+  };
+}
+
+const { author } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.{jpeg,jpg,png,gif}",
+);
+if (!images[`/src/assets/${author.image}`])
+  throw new Error(
+    `"${author.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`,
+  );
+---
+
+<article class="author">
+  <div class="author__image">
+    <Image src={images[`/src/assets/${author.image}`]()} alt={author.name} />
+  </div>
+  <div class="author__content" set:html={author.content} />
+</article>
+
+<style lang="scss">
+  .author {
+    overflow: hidden;
+    width: 32rem;
+
+    background-color: white;
+    border-radius: var(--border-radius-m);
+    box-shadow: var(--box-shadow-diffuse);
+
+    &__image {
+      height: 32rem;
+
+      img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__content {
+      padding: var(--space-small);
+    }
+  }
+</style>
