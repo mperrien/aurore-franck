@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-import heroImage from "@/assets/hero-image.jpg";
+import heroImage from "@/assets/sebastien-g-3gYsVLaw5Fo-unsplash.webp";
 import bookCover from "@/assets/emie-couverture.jpg";
 ---
 
@@ -19,7 +19,12 @@ import bookCover from "@/assets/emie-couverture.jpg";
     </div>
   </div>
   <div class="homeHero__image">
-    <Image src={heroImage} alt="La plage des Bas-Sablons à Saint-Malo" />
+    <Image
+      src={heroImage}
+      widths={[540, 720, 1200, heroImage.width]}
+      sizes={`(max-width: 720px) 540px, (max-width: 1200px) 720px,(max-width: 1600px) 1200px, ${heroImage.width}px`}
+      alt="La plage de Bon-Secours à Saint-Malo. Au premier plan, la piscine d'eau de mer avec son plongeoir. À l'arrière plan, les iles du Grand Bé et du Petit Bé. Dans la moitié supérieure de l'image, un ciel bleu sans nuage qui tire vers le rose en descendant vers l'horizon."
+    />
   </div>
 </section>
 
@@ -55,6 +60,10 @@ import bookCover from "@/assets/emie-couverture.jpg";
       gap: var(--space-large);
       padding-top: var(--space-large);
       padding-bottom: var(--space-large);
+
+      @media (min-width: 50rem) {
+        flex-direction: row-reverse;
+      }
     }
 
     h1 {
@@ -63,6 +72,10 @@ import bookCover from "@/assets/emie-couverture.jpg";
       font-size: 3.6rem;
       text-align: center;
       text-shadow: var(--box-shadow-sharp);
+
+      @media (width > 50rem) {
+        text-align: left;
+      }
     }
 
     &__book {

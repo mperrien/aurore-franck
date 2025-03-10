@@ -4,7 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/home/Hero.astro";
 import Quote from "@/components/home/Quote.astro";
 import Journey from "@/components/home/Journey.astro";
-import Book from "@/components/home/Book.astro";
+import Book from "@/components/home/NewBook.astro";
 import Authors from "@/components/home/Authors.astro";
 ---
 
@@ -25,8 +25,8 @@ import Authors from "@/components/home/Authors.astro";
   .home {
     > section {
       min-height: 100vh;
-      padding-top: var(--space-large);
-      padding-bottom: var(--space-large);
+      padding-top: calc(2 * var(--space-large));
+      padding-bottom: calc(2 * var(--space-large));
 
       & + .section {
         margin-top: var(--space-large);
