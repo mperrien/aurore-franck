@@ -275,36 +275,41 @@
 </section>
 
 <script>
-  const pf = document.querySelector(".js-page-front");
-  const pb = document.querySelector(".js-page-back");
-  const w = document.querySelector(".js-wrapper");
+  document.addEventListener("DOMContentLoaded", function () {
+    const pf = document.querySelector(".js-page-front");
+    const pb = document.querySelector(".js-page-back");
+    const w = document.querySelector(".js-wrapper");
+    let fixed = false;
 
-  if (pf && pb) {
-    const pfh = (pf as HTMLElement).offsetHeight;
-    const pbh = (pb as HTMLElement).offsetHeight;
+    const f = document.getElementById("flip");
+    const book = document.getElementById("book");
+    const options = document.querySelectorAll(".js-toggle-option");
 
-    if (pfh > pbh) {
-      (pb as HTMLElement).style.height = `${pfh}px`;
-    } else if (pbh > pfh) {
-      (pf as HTMLElement).style.height = `${pbh}px`;
+    if (f && book) {
+      f.addEventListener("change", () => {
+        if (pf && pb && !fixed) {
+          const pfh = (pf as HTMLElement).offsetHeight;
+          const pbh = (pb as HTMLElement).offsetHeight;
+
+          if (pfh > pbh) {
+            (pb as HTMLElement).style.height = `${pfh}px`;
+          } else if (pbh > pfh) {
+            (pf as HTMLElement).style.height = `${pbh}px`;
+          }
+
+          (w as HTMLElement).style.height = `${Math.max(pfh, pbh)}px`;
+
+          fixed = true;
+        }
+
+        book.classList.toggle("flipped");
+
+        if (options) {
+          options.forEach((o) => {
+            o.classList.toggle("active");
+          });
+        }
+      });
     }
-
-    (w as HTMLElement).style.height = `${Math.max(pfh, pbh)}px`;
-  }
-
-  const f = document.getElementById("flip");
-  const book = document.getElementById("book");
-  const options = document.querySelectorAll(".js-toggle-option");
-
-  if (f && book) {
-    f.addEventListener("change", () => {
-      book.classList.toggle("flipped");
-
-      if (options) {
-        options.forEach((o) => {
-          o.classList.toggle("active");
-        });
-      }
-    });
-  }
+  });
 </script>
