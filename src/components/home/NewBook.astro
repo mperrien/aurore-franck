@@ -1,0 +1,222 @@
+<section class="homeBook">
+  <h2 class="text-center">Notre livre</h2>
+  <div class="container">
+    <div class="homeBook__action">
+      <button type="button" id="flip">flip</button>
+    </div>
+    <div class="bookWrapper">
+      <div class="book text-justify" id="book">
+        <div class="page js-page-front">
+          <p>
+            13h20. Un après-midi de juillet sur la plage des Bas-Sablons à
+            Saint-Malo.
+          </p>
+          <p class="dialog">
+            &laquo;&nbsp;Franck... Et si on écrivait un livre&nbsp;?
+          </p>
+          <p class="dialog">&mdash;&nbsp;Hein&nbsp;?</p>
+          <p class="dialog">
+            &mdash;&nbsp;Oui, un livre&nbsp;! Ce serait une belle façon de
+            transmettre nos valeurs et d’exprimer ce qu’on a sur le cœur, tu ne
+            crois pas&nbsp;?
+          </p>
+          <p class="dialog">
+            &mdash;&nbsp;Tu me prends de court, mais... oui c’est une bonne
+            idée.
+          </p>
+          <p class="dialog">
+            &mdash;&nbsp;Et puis, toi, tu as déjà écrit des livres, non&nbsp;?
+          </p>
+          <p class="dialog">
+            &mdash;&nbsp;Euh... &laquo;&nbsp;écrit des livres&nbsp;&raquo;,
+            c’est vite dit, mais on va dire que oui, c’est vrai. Mais écrire à
+            deux&nbsp;, ça ne doit pas être simple...
+          </p>
+          <p class="dialog">&mdash;&nbsp;On aime les défis pas vrai&nbsp;?</p>
+          <p class="dialog">&mdash;&nbsp;C’est vrai&nbsp;...</p>
+          <p class="dialog">&mdash;&nbsp;Allez chiche, on se lance&nbsp;?</p>
+          <p class="dialog">&mdash;&nbsp;OK, chiche.&nbsp;&raquo;</p>
+          <p>9 mois plus tard.</p>
+          <p class="dialog">&laquo;&nbsp;Franck&nbsp;?</p>
+          <p class="dialog">&mdash;&nbsp;Oui&nbsp;?</p>
+          <p class="dialog">&mdash;&nbsp;Je crois bien qu’on a fini.</p>
+          <p class="dialog">
+            &mdash;&nbsp;Tu es sûre&nbsp;? Certaine de toi&nbsp;? Parce que bon,
+            tu pourrais changer encore une énième phrase ici ou là, non&nbsp;?
+            Voire pire, UNE virgule... Avoue, c’est plus fort que toi&nbsp;!
+          </p>
+        </div>
+        <div class="page page--summary js-page-back">
+          <p>
+            Julia tient entre ses mains tout le bonheur possible pour une vie de
+            rêve lorsque le drame s'abat sur elle avec violence.
+          </p>
+          <p>
+            Brisée, submergée par la colère, la culpabilité et la peur, elle se
+            noie dans une douleur sans fond. Rien ne semble pouvoir l'arracher à
+            ce gouffre, pas même son frère Erick, urgentiste, qui lutte
+            désespérément pour la sauver. Mais alors qu'elle a perdu tout
+            espoir, des événements inattendus bouleverseront son existence.
+          </p>
+          <p>
+            Et si chaque épreuve cachait une force insoupçonnée, prouvant que
+            toute fin peut être un nouveau commencement ?
+          </p>
+          <p>
+            Dans ce roman singulier, ancré au cœur de la magnifique cité
+            corsaire de Saint-Malo, l'histoire nous rappelle que, même au cœur
+            du chaos, l'amour trouve toujours un chemin.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style lang="scss">
+    .homeBook {
+      .container {
+        position: relative;
+
+        // min-height: 200vh;
+      }
+
+      .bookWrapper {
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 60rem;
+
+        perspective: 99rem;
+        // transform: translate(-50%, -50%);
+        // position: relative;
+
+        // max-width: 110rem;
+
+        // &::before,
+        // &::after {
+        //   position: absolute;
+        //   bottom: var(--space-medium);
+        //   z-index: 3;
+
+        //   display: block;
+
+        //   transform: translate(-50%, 50%);
+        // }
+
+        // &::before {
+        //   content: "4";
+
+        //   left: 50%;
+        // }
+
+        // @media (width > 60rem) {
+        //   &::before {
+        //     left: 25%;
+        //   }
+
+        //   &::after {
+        //     content: "5";
+
+        //     left: 75%;
+        //   }
+        // }
+      }
+
+      .book {
+        position: relative;
+
+        // padding: var(--space-medium) var(--space-medium) var(--space-large);
+
+        // background-color: white;
+        // border-radius: var(--border-radius-m);
+        // box-shadow: var(--box-shadow-diffuse);
+
+        transition: transform 1s;
+        transform-style: preserve-3d;
+
+        // @media (width > 60rem) {
+        //   column-count: 2;
+        //   column-gap: var(--space-large);
+
+        //   &::before {
+        //     content: "";
+
+        //     position: absolute;
+        //     top: 0;
+        //     left: 50%;
+
+        //     display: block;
+        //     height: 100%;
+        //     width: 0.1rem;
+
+        //     background-color: var(--grey-200);
+        //   }
+        // }
+
+        &.flipped {
+          transform: rotateY(180deg);
+          transition: transform 0.5s ease-in-out;
+        }
+
+        .page {
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          // height: 100%;
+          width: 100%;
+
+          backface-visibility: hidden;
+          background-color: white;
+          border-radius: var(--border-radius-m);
+          box-shadow: var(--box-shadow-diffuse);
+
+          padding: var(--space-medium);
+
+          &--summary {
+            background-color: hsl(351, 57%, 95%);
+
+            transform: rotateY(180deg);
+          }
+        }
+
+        p {
+          &.dialog {
+            margin-top: 0;
+          }
+
+          &:not([class]) + p.dialog {
+            margin-top: var(--space-small);
+          }
+        }
+      }
+    }
+  </style>
+</section>
+
+<script>
+  const pf = document.querySelector(".js-page-front");
+  const pb = document.querySelector(".js-page-back");
+
+  if (pf && pb) {
+    const pfh = (pf as HTMLElement).offsetHeight;
+    const pbh = (pb as HTMLElement).offsetHeight;
+
+    if (pfh > pbh) {
+      (pb as HTMLElement).style.height = `${pfh}px`;
+    } else if (pbh > pfh) {
+      (pf as HTMLElement).style.height = `${pbh}px`;
+    }
+  }
+
+  const b = document.getElementById("flip");
+  const book = document.getElementById("book");
+  if (b && book) {
+    b.addEventListener("click", () => {
+      console.log("flip");
+      book.classList.toggle("flipped");
+    });
+  }
+</script>
