@@ -2,9 +2,24 @@
   <h2 class="text-center">Notre livre</h2>
   <div class="container">
     <div class="homeBook__action">
-      <button type="button" id="flip">flip</button>
+      <div class="homeBook__checkbox">
+        <input type="checkbox" id="flip" />
+        <label for="flip">Afficher un extrait du manuscrit ou le résumé</label>
+      </div>
+      <div
+        class="toggleOption toggleOption--excerpt js-toggle-option active"
+        id="excerpt"
+      >
+        Extrait
+      </div>
+      <div
+        class="toggleOption toggleOption--summary js-toggle-option"
+        id="summary"
+      >
+        Résumé
+      </div>
     </div>
-    <div class="bookWrapper">
+    <div class="bookWrapper js-wrapper">
       <div class="book text-justify" id="book">
         <div class="page page--excerpt js-page-front">
           <p>
@@ -70,84 +85,119 @@
     .homeBook {
       .container {
         position: relative;
+      }
 
-        // min-height: 200vh;
+      &__action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-small);
+        margin-bottom: var(--space-small);
+
+        .homeBook__checkbox {
+          position: relative;
+          order: 2;
+
+          overflow: hidden;
+          height: 3rem;
+          width: 6rem;
+
+          label {
+            &::before,
+            &::after {
+              content: "";
+
+              position: absolute;
+
+              display: block;
+            }
+
+            &::before {
+              top: 0;
+              left: 0;
+              z-index: 1;
+
+              height: 3rem;
+              width: 6rem;
+
+              background-color: var(--grey-300);
+              border-radius: 3rem;
+
+              transition: background-color 0.3s;
+            }
+
+            &::after {
+              top: 0.3rem;
+              left: 0.3rem;
+              z-index: 2;
+
+              height: 2.4rem;
+              width: 2.4rem;
+
+              border-radius: 2.4rem;
+
+              background-color: white;
+
+              transition: all 0.3s ease-in-out;
+            }
+          }
+
+          input {
+            height: 0;
+            width: 0;
+
+            visibility: hidden;
+
+            &:active + label {
+              &::after {
+                width: 3.2rem;
+              }
+            }
+
+            &:checked + label {
+              &::before {
+                background-color: var(--brand-blue);
+              }
+
+              &::after {
+                left: calc(100% - 0.3rem);
+                transform: translateX(-100%);
+              }
+            }
+          }
+        }
+
+        .toggleOption {
+          color: var(--text-color-dim);
+          font-family: var(--ui-font);
+
+          &.active {
+            color: var(--text-color);
+          }
+
+          &--excerpt {
+            order: 1;
+          }
+
+          &--summary {
+            order: 3;
+          }
+        }
       }
 
       .bookWrapper {
-        // position: absolute;
-        // top: 50%;
-        // left: 50%;
         margin-right: auto;
         margin-left: auto;
         max-width: 60rem;
 
         perspective: 99rem;
-        // transform: translate(-50%, -50%);
-        // position: relative;
-
-        // max-width: 110rem;
-
-        // &::before,
-        // &::after {
-        //   position: absolute;
-        //   bottom: var(--space-medium);
-        //   z-index: 3;
-
-        //   display: block;
-
-        //   transform: translate(-50%, 50%);
-        // }
-
-        // &::before {
-        //   content: "4";
-
-        //   left: 50%;
-        // }
-
-        // @media (width > 60rem) {
-        //   &::before {
-        //     left: 25%;
-        //   }
-
-        //   &::after {
-        //     content: "5";
-
-        //     left: 75%;
-        //   }
-        // }
       }
 
       .book {
         position: relative;
 
-        // padding: var(--space-medium) var(--space-medium) var(--space-large);
-
-        // background-color: white;
-        // border-radius: var(--border-radius-m);
-        // box-shadow: var(--box-shadow-diffuse);
-
         transition: transform 1s;
         transform-style: preserve-3d;
-
-        // @media (width > 60rem) {
-        //   column-count: 2;
-        //   column-gap: var(--space-large);
-
-        //   &::before {
-        //     content: "";
-
-        //     position: absolute;
-        //     top: 0;
-        //     left: 50%;
-
-        //     display: block;
-        //     height: 100%;
-        //     width: 0.1rem;
-
-        //     background-color: var(--grey-200);
-        //   }
-        // }
 
         &.flipped {
           transform: rotateY(180deg);
@@ -159,7 +209,6 @@
           top: 0;
           left: 0;
 
-          // height: 100%;
           width: 100%;
 
           backface-visibility: hidden;
@@ -228,6 +277,7 @@
 <script>
   const pf = document.querySelector(".js-page-front");
   const pb = document.querySelector(".js-page-back");
+  const w = document.querySelector(".js-wrapper");
 
   if (pf && pb) {
     const pfh = (pf as HTMLElement).offsetHeight;
@@ -238,14 +288,37 @@
     } else if (pbh > pfh) {
       (pf as HTMLElement).style.height = `${pbh}px`;
     }
+
+    (w as HTMLElement).style.height = `${Math.max(pfh, pbh)}px`;
   }
 
-  const b = document.getElementById("flip");
+  const f = document.getElementById("flip");
   const book = document.getElementById("book");
-  if (b && book) {
-    b.addEventListener("click", () => {
-      console.log("flip");
+  const options = document.querySelectorAll(".js-toggle-option");
+
+  if (f && book) {
+    f.addEventListener("change", () => {
       book.classList.toggle("flipped");
+
+      if (options) {
+        console.log(options);
+        options.forEach((o) => {
+          o.classList.toggle("active");
+        });
+      }
     });
   }
+
+  // function flip() {
+  //   if (book) {
+  //     book.classList.toggle("flipped");
+
+  //     if (options) {
+  //       console.log(options);
+  //       options.forEach((o) => {
+  //         o.classList.toggle("active");
+  //       });
+  //     }
+  //   }
+  // }
 </script>
