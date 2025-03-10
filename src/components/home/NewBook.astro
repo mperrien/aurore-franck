@@ -6,44 +6,38 @@
     </div>
     <div class="bookWrapper">
       <div class="book text-justify" id="book">
-        <div class="page js-page-front">
+        <div class="page page--excerpt js-page-front">
           <p>
-            13h20. Un après-midi de juillet sur la plage des Bas-Sablons à
-            Saint-Malo.
+            La fin de l’après-midi s’annonce pluvieuse à l’image de la semaine.
+            L’approche de l'hiver distille une morosité ambiante mais Julia et
+            Alex, à cet instant, se moquent complètement de la météo. Après des
+            heures en ville, shopping oblige, ils ont hâte de se retrouver en
+            tête à tête pour oublier la foule des magasins. Des heures en fait
+            où Alex prend un réel plaisir à observer Julia au fil des cabines
+            d’essayages.
           </p>
-          <p class="dialog">
-            &laquo;&nbsp;Franck... Et si on écrivait un livre&nbsp;?
+          <p>
+            L’interstice d’un rideau, le reflet dans un miroir, une bretelle de
+            dentelle rouge dévoilée... Tout est bon pour admirer le corps
+            sublime de celle qui le rend fou de désir.
           </p>
-          <p class="dialog">&mdash;&nbsp;Hein&nbsp;?</p>
-          <p class="dialog">
-            &mdash;&nbsp;Oui, un livre&nbsp;! Ce serait une belle façon de
-            transmettre nos valeurs et d’exprimer ce qu’on a sur le cœur, tu ne
-            crois pas&nbsp;?
+          <p>
+            Des images sensuelles n’arrêtent pas de défiler dans son esprit
+            depuis qu’il contemple la femme de sa vie dans cette robe
+            incroyable... rouge elle aussi. Une couleur qui lui va si bien...
+            Les courbes irréelles de son corps s'harmonisent parfaitement avec
+            la finesse du tissu tandis que la profondeur de son décolleté
+            interdit de porter quoi que ce soit en dessous. À croire que
+            certaines parures n’ont été créées que pour être enlevées...
           </p>
-          <p class="dialog">
-            &mdash;&nbsp;Tu me prends de court, mais... oui c’est une bonne
-            idée.
-          </p>
-          <p class="dialog">
-            &mdash;&nbsp;Et puis, toi, tu as déjà écrit des livres, non&nbsp;?
-          </p>
-          <p class="dialog">
-            &mdash;&nbsp;Euh... &laquo;&nbsp;écrit des livres&nbsp;&raquo;,
-            c’est vite dit, mais on va dire que oui, c’est vrai. Mais écrire à
-            deux&nbsp;, ça ne doit pas être simple...
-          </p>
-          <p class="dialog">&mdash;&nbsp;On aime les défis pas vrai&nbsp;?</p>
-          <p class="dialog">&mdash;&nbsp;C’est vrai&nbsp;...</p>
-          <p class="dialog">&mdash;&nbsp;Allez chiche, on se lance&nbsp;?</p>
-          <p class="dialog">&mdash;&nbsp;OK, chiche.&nbsp;&raquo;</p>
-          <p>9 mois plus tard.</p>
-          <p class="dialog">&laquo;&nbsp;Franck&nbsp;?</p>
-          <p class="dialog">&mdash;&nbsp;Oui&nbsp;?</p>
-          <p class="dialog">&mdash;&nbsp;Je crois bien qu’on a fini.</p>
-          <p class="dialog">
-            &mdash;&nbsp;Tu es sûre&nbsp;? Certaine de toi&nbsp;? Parce que bon,
-            tu pourrais changer encore une énième phrase ici ou là, non&nbsp;?
-            Voire pire, UNE virgule... Avoue, c’est plus fort que toi&nbsp;!
+          <p>
+            Seuls la décence et le regard de la vendeuse « tue l’amour » ont
+            retenu les pulsions d’Alex, plus que coquines. Malgré la chaleur et
+            l'atmosphère ambiante, les petits seins de Julia, appellent aux
+            baisers et pointent fièrement sous l’étoffe du tissu. Ses longues
+            jambes, qu’il aime tant sentir se refermer autour de son bassin, se
+            découvrent à chaque mouvement de hanches. Trahi par les réactions de
+            son corps, un peu trop visibles en public,
           </p>
         </div>
         <div class="page page--summary js-page-back">
@@ -173,7 +167,42 @@
           border-radius: var(--border-radius-m);
           box-shadow: var(--box-shadow-diffuse);
 
-          padding: var(--space-medium);
+          padding: var(--space-medium) var(--space-medium) var(--space-large);
+
+          &--excerpt {
+            --line-height: 3rem;
+
+            p:last-child {
+              position: relative;
+
+              &::before,
+              &::after {
+                position: absolute;
+                left: 0;
+
+                display: block;
+                width: 100%;
+              }
+
+              &::before {
+                content: "";
+
+                bottom: 0;
+
+                height: var(--line-height);
+
+                background-color: white;
+              }
+
+              &::after {
+                content: "5";
+
+                top: 100%;
+
+                text-align: center;
+              }
+            }
+          }
 
           &--summary {
             background-color: hsl(351, 57%, 95%);
