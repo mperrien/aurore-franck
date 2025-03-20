@@ -1,7 +1,7 @@
 <section class="homeProject">
   <h2 class="text-center">...à la naissance d'un projet</h2>
-  <div class="bookWrapper container">
-    <div class="book text-justify">
+  <div class="bookWrapper container container--mini">
+    <div class="book text-justif">
       <p>
         13h20. Un après-midi de juillet sur la plage des Bas-Sablons à
         Saint-Malo.
@@ -92,7 +92,7 @@
     .bookWrapper {
       position: relative;
 
-      max-width: 110rem;
+      // max-width: 80rem;
 
       // &::before,
       // &::after {
@@ -127,29 +127,33 @@
     .book {
       position: relative;
 
-      padding: var(--space-small);
+      // padding: var(--space-medium);
 
-      background-color: white;
-      border-radius: var(--border-radius-m);
-      box-shadow: var(--box-shadow-diffuse);
+      // background-color: white;
+      // border-radius: var(--border-radius-m);
+      // box-shadow: var(--box-shadow-diffuse);
 
       @media (width > 60rem) {
-        column-count: 2;
-        column-gap: var(--space-large);
+        // column-count: 2;
+        // column-gap: var(--space-large);
 
-        &::before {
-          content: "";
+        // &::before {
+        //   content: "";
 
-          position: absolute;
-          top: 0;
-          left: 50%;
+        //   position: absolute;
+        //   top: 0;
+        //   left: 50%;
 
-          display: block;
-          height: 100%;
-          width: 0.1rem;
+        //   display: block;
+        //   height: 100%;
+        //   width: 0.1rem;
 
-          background-color: var(--grey-200);
-        }
+        //   background-color: var(--grey-200);
+        // }
+      }
+
+      @media (width > 80rem) {
+        // column-count: 3;
       }
 
       p {
