@@ -315,6 +315,7 @@ import bookCover from "@/assets/emie-couverture.webp";
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    let fixed = false;
     const controls = document.querySelectorAll(".js-radio-page");
     const book = document.getElementById("book");
 
@@ -347,24 +348,25 @@ import bookCover from "@/assets/emie-couverture.webp";
     });
 
     function fixHeight() {
-      const pc = document.querySelector(".js-page-cover");
-      const pe = document.querySelector(".js-page-excerpt");
-      const ps = document.querySelector(".js-page-summary");
-      const w = document.querySelector(".js-wrapper");
-      let fixed = false;
+      if (!fixed) {
+        const pc = document.querySelector(".js-page-cover");
+        const pe = document.querySelector(".js-page-excerpt");
+        const ps = document.querySelector(".js-page-summary");
+        const w = document.querySelector(".js-wrapper");
 
-      if (pc && pe && ps && !fixed) {
-        const pch = (pc as HTMLElement).offsetHeight;
-        const peh = (pe as HTMLElement).offsetHeight;
-        const psh = (ps as HTMLElement).offsetHeight;
+        if (pc && pe && ps) {
+          const pch = (pc as HTMLElement).offsetHeight;
+          const peh = (pe as HTMLElement).offsetHeight;
+          const psh = (ps as HTMLElement).offsetHeight;
 
-        const max = Math.max(pch, peh, psh);
-        (pc as HTMLElement).style.height = `${max}px`;
-        (pe as HTMLElement).style.height = `${max}px`;
-        (ps as HTMLElement).style.height = `${max}px`;
-        (w as HTMLElement).style.height = `${max}px`;
+          const max = Math.max(pch, peh, psh);
+          (pc as HTMLElement).style.height = `${max}px`;
+          (pe as HTMLElement).style.height = `${max}px`;
+          (ps as HTMLElement).style.height = `${max}px`;
+          (w as HTMLElement).style.height = `${max}px`;
 
-        fixed = true;
+          fixed = true;
+        }
       }
     }
 
