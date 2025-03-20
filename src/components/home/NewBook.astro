@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 import bookCover from "@/assets/emie-couverture.webp";
 ---
@@ -7,7 +8,7 @@ import bookCover from "@/assets/emie-couverture.webp";
 <section class="homeBook">
   <h2 class="text-center">Notre livre</h2>
   <div class="container">
-    <ul class="homeBook__action list-reset">
+    <ul class="homeBook__action list-reset js-radio-inputs">
       <li class="homeBook__radio">
         <input
           type="radio"
@@ -41,6 +42,14 @@ import bookCover from "@/assets/emie-couverture.webp";
       </li>
     </ul>
     <div class="bookWrapper js-wrapper">
+      <button type="button" class="button button--prev js-btn-prev">
+        <span class="screen-reader-text">Page précédente</span>
+        <Icon name="feather/chevron-left" size="2rem" />
+      </button>
+      <button type="button" class="button button--next js-btn-next">
+        <span class="screen-reader-text">Page suivante</span>
+        <Icon name="feather/chevron-right" size="2rem" />
+      </button>
       <div class="book text-justify" id="book" style="--tr: 0;">
         <div class="page page--cover js-page js-page-cover" style="--i: 0;">
           <Image
@@ -130,10 +139,11 @@ import bookCover from "@/assets/emie-couverture.webp";
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: var(--space-small);
-        margin-bottom: var(--space-small);
+        gap: var(--space-medium);
+        margin-bottom: var(--space-medium);
 
         font-family: var(--ui-font);
+        font-size: 1.6rem;
 
         .homeBook__radio {
           position: relative;
@@ -214,30 +224,59 @@ import bookCover from "@/assets/emie-couverture.webp";
           }
         }
 
-        .toggleOption {
-          color: var(--text-color-dim);
-          font-family: var(--ui-font);
+        // .toggleOption {
+        //   color: var(--text-color-dim);
+        //   font-family: var(--ui-font);
 
-          &.active {
-            color: var(--text-color);
-          }
+        //   &.active {
+        //     color: var(--text-color);
+        //   }
 
-          &--excerpt {
-            order: 1;
-          }
+        //   &--excerpt {
+        //     order: 1;
+        //   }
 
-          &--summary {
-            order: 3;
-          }
-        }
+        //   &--summary {
+        //     order: 3;
+        //   }
+        // }
       }
 
       .bookWrapper {
+        position: relative;
+
         margin-right: auto;
         margin-left: auto;
         max-width: 60rem;
 
         perspective: 99rem;
+      }
+
+      .button {
+        position: absolute;
+        top: 50%;
+
+        display: grid;
+        place-content: center;
+        height: 4.8rem;
+        width: 4.8rem;
+
+        border-radius: 50%;
+        box-shadow: none;
+
+        transform: translate(0, -50%);
+
+        &--prev {
+          left: calc(-1 * var(--space-large));
+        }
+
+        &--next {
+          right: calc(-1 * var(--space-large));
+        }
+
+        &.hidden {
+          display: none;
+        }
       }
 
       .book {
@@ -247,7 +286,8 @@ import bookCover from "@/assets/emie-couverture.webp";
         aspect-ratio: 0.616;
         overflow: hidden;
 
-        outline: 0.1rem solid rebeccapurple;
+        // outline: 0.1rem solid rebeccapurple;
+        box-shadow: var(--box-shadow-diffuse);
 
         // transition: transform 0.5s ease-in-out;
         // transform-style: preserve-3d;
@@ -319,6 +359,8 @@ import bookCover from "@/assets/emie-couverture.webp";
                 top: 100%;
 
                 text-align: center;
+
+                transform: translateY(-50%);
               }
             }
           }
@@ -368,6 +410,18 @@ import bookCover from "@/assets/emie-couverture.webp";
       });
     });
 
+    const btnPrev = document.querySelector(".js-btn-prev");
+    const btnNext = document.querySelector(".js-btn-next");
+
+    btnPrev?.addEventListener("click", () => {
+      console.log("clicked p");
+      goToPage("prev");
+    });
+    btnNext?.addEventListener("click", () => {
+      console.log("clicked n");
+      goToPage("next");
+    });
+
     function fixHeight() {
       const pc = document.querySelector(".js-page-cover");
       const pe = document.querySelector(".js-page-excerpt");
@@ -403,7 +457,23 @@ import bookCover from "@/assets/emie-couverture.webp";
       //   });
       // }
     }
-    // }
-    // }
+
+    function goToPage(p: "prev" | "next") {
+      console.log(p);
+      let currentPage = book?.style.getPropertyValue("--tr");
+      if (!currentPage) {
+        currentPage = "0";
+      }
+      console.log(currentPage);
+      let newPage: number = parseInt(currentPage);
+      if (p === "prev") {
+        newPage = (newPage + 2) % 3;
+      } else if (p === "next") {
+        newPage = (newPage + 1) % 3;
+      }
+      console.log(newPage);
+      (controls[newPage] as HTMLInputElement).checked = true;
+      book!.style.setProperty("--tr", newPage.toString());
+    }
   });
 </script>
