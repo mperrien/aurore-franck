@@ -287,6 +287,10 @@ import bookCover from "@/assets/emie-couverture.webp";
           &--excerpt {
             --line-height: 3rem;
 
+            padding: var(--space-small);
+
+            background-color: white;
+
             p:last-child {
               position: relative;
 
@@ -320,7 +324,9 @@ import bookCover from "@/assets/emie-couverture.webp";
           }
 
           &--summary {
-            background-color: hsl(351, 57%, 95%);
+            padding: var(--space-small);
+
+            background-color: hsl(41, 61%, 93%);
 
             // transform: rotateY(180deg);
           }
@@ -343,7 +349,6 @@ import bookCover from "@/assets/emie-couverture.webp";
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const controls = document.querySelectorAll(".js-radio-page");
-    // const pages = document.querySelectorAll(".js-page");
     const book = document.getElementById("book");
 
     controls.forEach((c) => {
@@ -359,43 +364,46 @@ import bookCover from "@/assets/emie-couverture.webp";
         } else if (p === "summary") {
           book!.style.setProperty("--tr", "2");
         }
+        fixHeight();
       });
     });
 
-    const pf = document.querySelector(".js-page-front");
-    const pb = document.querySelector(".js-page-back");
-    const w = document.querySelector(".js-wrapper");
-    let fixed = false;
+    function fixHeight() {
+      const pc = document.querySelector(".js-page-cover");
+      const pe = document.querySelector(".js-page-excerpt");
+      const ps = document.querySelector(".js-page-summary");
+      const w = document.querySelector(".js-wrapper");
+      let fixed = false;
 
-    const f = document.getElementById("flip");
-    // const book = document.getElementById("book");
-    const options = document.querySelectorAll(".js-toggle-option");
+      // const f = document.getElementById("flip");
+      // // const book = document.getElementById("book");
+      // const options = document.querySelectorAll(".js-toggle-option");
 
-    if (f && book) {
-      f.addEventListener("change", () => {
-        if (pf && pb && !fixed) {
-          const pfh = (pf as HTMLElement).offsetHeight;
-          const pbh = (pb as HTMLElement).offsetHeight;
+      // if (f && book) {
+      // f.addEventListener("change", () => {
+      if (pc && pe && ps && !fixed) {
+        const pch = (pc as HTMLElement).offsetHeight;
+        const peh = (pe as HTMLElement).offsetHeight;
+        const psh = (ps as HTMLElement).offsetHeight;
 
-          if (pfh > pbh) {
-            (pb as HTMLElement).style.height = `${pfh}px`;
-          } else if (pbh > pfh) {
-            (pf as HTMLElement).style.height = `${pbh}px`;
-          }
+        const max = Math.max(pch, peh, psh);
+        (pc as HTMLElement).style.height = `${max}px`;
+        (pe as HTMLElement).style.height = `${max}px`;
+        (ps as HTMLElement).style.height = `${max}px`;
+        (w as HTMLElement).style.height = `${max}px`;
 
-          (w as HTMLElement).style.height = `${Math.max(pfh, pbh)}px`;
+        fixed = true;
+      }
 
-          fixed = true;
-        }
+      // book.classList.toggle("flipped");
 
-        book.classList.toggle("flipped");
-
-        if (options) {
-          options.forEach((o) => {
-            o.classList.toggle("active");
-          });
-        }
-      });
+      // if (options) {
+      //   options.forEach((o) => {
+      //     o.classList.toggle("active");
+      //   });
+      // }
     }
+    // }
+    // }
   });
 </script>
