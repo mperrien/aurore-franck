@@ -18,7 +18,7 @@ import bookCover from "@/assets/emie-couverture.webp";
           checked
           class="js-radio-page"
         />
-        <label for="cover"> Couverture </label>
+        <label for="cover"><span class="screen-reader-text">1</span></label>
       </li>
       <li class="homeBook__radio">
         <input
@@ -28,7 +28,7 @@ import bookCover from "@/assets/emie-couverture.webp";
           value="excerpt"
           class="js-radio-page"
         />
-        <label for="excerpt"> Extrait </label>
+        <label for="excerpt"><span class="screen-reader-text">3</span></label>
       </li>
       <li class="homeBook__radio">
         <input
@@ -38,7 +38,7 @@ import bookCover from "@/assets/emie-couverture.webp";
           value="summary"
           class="js-radio-page"
         />
-        <label for="summary"> Résumé </label>
+        <label for="summary"><span class="screen-reader-text">3</span></label>
       </li>
     </ul>
     <div class="bookWrapper js-wrapper">
@@ -139,18 +139,26 @@ import bookCover from "@/assets/emie-couverture.webp";
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: var(--space-medium);
+        gap: var(--space-small);
         margin-bottom: var(--space-medium);
 
-        font-family: var(--ui-font);
-        font-size: 1.6rem;
+        // font-family: var(--ui-font);
+        // font-size: 1.6rem;
 
         .homeBook__radio {
           position: relative;
 
           label {
+            --base: 1rem;
+
+            display: block;
+
             color: var(--text-color);
             cursor: pointer;
+
+            width: calc(1 * var(--base));
+
+            transition: width 0.3s ease-in-out;
 
             &::before {
               content: "";
@@ -161,11 +169,11 @@ import bookCover from "@/assets/emie-couverture.webp";
               z-index: 1;
 
               display: block;
-              height: 0.4rem;
+              height: calc(1 * var(--base));
               width: 100%;
 
-              background-color: transparent;
-              border-radius: 0.2rem;
+              background-color: var(--grey-400);
+              border-radius: calc(var(--base) / 2);
 
               transition: background-color 0.3s;
             }
@@ -179,7 +187,11 @@ import bookCover from "@/assets/emie-couverture.webp";
             display: none;
 
             &:checked + label {
+              width: calc(2 * var(--base));
+
               &::before {
+                // width: 1.6rem;
+
                 background-color: var(--brand-blue);
               }
             }
