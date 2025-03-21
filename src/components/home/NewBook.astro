@@ -414,4 +414,53 @@ import bookCover from "@/assets/emie-couverture.webp";
     fixed = false;
     fixHeight();
   });
+
+  // Handle swipes
+  let xDown: number | null = null;
+  let yDown: number | null = null;
+
+  function getTouches(e: TouchEvent) {
+    return e.touches;
+  }
+
+  function handleTouchStart(e: TouchEvent) {
+    const firstTouch = getTouches(e)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+  }
+
+  function handleTouchMove(e: TouchEvent) {
+    if (!xDown || !yDown) {
+      return;
+    }
+
+    console.log(e);
+    var xUp = e.changedTouches[0].clientX;
+    var yUp = e.changedTouches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      /*most significant*/
+      if (xDiff > 0) {
+        /* right swipe */
+        goToPage("next");
+      } else {
+        /* left swipe */
+        goToPage("prev");
+      }
+    } else {
+      if (yDiff > 0) {
+        /* down swipe */
+      } else {
+        /* up swipe */
+      }
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;
+  }
+  book!.addEventListener("touchstart", handleTouchStart);
+  book!.addEventListener("touchend", handleTouchMove);
 </script>
