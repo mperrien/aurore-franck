@@ -142,9 +142,6 @@ import bookCover from "@/assets/emie-couverture.webp";
         gap: var(--space-small);
         margin-bottom: var(--space-medium);
 
-        // font-family: var(--ui-font);
-        // font-size: 1.6rem;
-
         .homeBook__radio {
           position: relative;
 
@@ -190,8 +187,6 @@ import bookCover from "@/assets/emie-couverture.webp";
               width: calc(2 * var(--base));
 
               &::before {
-                // width: 1.6rem;
-
                 background-color: var(--brand-blue);
               }
             }
@@ -241,8 +236,6 @@ import bookCover from "@/assets/emie-couverture.webp";
       }
 
       .book {
-        // position: relative;
-
         display: flex;
         align-items: flex-start;
         gap: var(--space-medium);
@@ -251,17 +244,7 @@ import bookCover from "@/assets/emie-couverture.webp";
 
         width: 100%;
 
-        @media (width > 51.875rem) {
-          // box-shadow: var(--box-shadow-diffuse);
-          // aspect-ratio: 0.616;
-        }
-
         .page {
-          // position: absolute;
-          // top: 0;
-          // left: 0;
-
-          // margin-left: calc(var(--i) * 100%);
           flex: 1 0 auto;
           width: 100%;
 
@@ -271,10 +254,6 @@ import bookCover from "@/assets/emie-couverture.webp";
             calc(-1 * var(--tr) * (100% + var(--space-medium)))
           );
           transition: transform 0.3s ease-in-out;
-
-          // @media (width > 60rem) {
-          //   box-shadow: none;
-          // }
 
           &--cover {
             img {
