@@ -1,22 +1,31 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 import heroImage from "@/assets/sebastien-g-3gYsVLaw5Fo-unsplash.webp";
-import bookCover from "@/assets/emie-couverture.jpg";
 ---
 
 <section class="homeHero">
   <div class="homeHero__content container">
     <h1>
-      Aurore Stevens et Franck Garden-Brèche<br /> vous invitent à découvrir leur
-      manuscrit Emi(e).
+      <span class="color big">Aurore Stevens</span><span class="big"
+        >&nbsp;&
+      </span><br /><span class="color big">Franck Garden-Brèche</span><br /> vous
+      invitent à découvrir leur manuscrit<br />
+      <Icon name="emie" />
+      <svg
+        viewBox="0 0 30 10"
+        xmlns="http://www.w3.org/2000/svg"
+        class="svg-shadow"
+      >
+        <defs>
+          <filter id="shadow">
+            <feDropShadow dx="0" dy="6" stdDeviation="12" flood-opacity="0.5"
+            ></feDropShadow>
+          </filter>
+        </defs>
+      </svg>
     </h1>
-    <div class="homeHero__book">
-      <Image
-        src={bookCover}
-        alt="La couverture du livre Emi(e). Elle représente un ciel nuageux dans les tons roses. Au-dessus du titre, il est écrit 'Sois assurée que nous nous retrouverons...'"
-      />
-    </div>
   </div>
   <div class="homeHero__image">
     <Image
@@ -30,8 +39,10 @@ import bookCover from "@/assets/emie-couverture.jpg";
 
 <style lang="scss">
   .homeHero {
+    --text-special: var(--macaroni);
+
     position: relative;
-    min-height: unset;
+    min-height: 70vh;
 
     &__image {
       position: absolute;
@@ -54,24 +65,47 @@ import bookCover from "@/assets/emie-couverture.jpg";
       z-index: 2;
 
       display: flex;
-      flex-direction: column-reverse;
       align-items: center;
-      justify-content: center;
-      gap: var(--space-large);
       padding-top: var(--space-large);
       padding-bottom: var(--space-large);
-
-      @media (min-width: 50rem) {
-        flex-direction: row-reverse;
-      }
     }
 
     h1 {
       color: white;
-      font-family: var(--display-font);
-      font-size: 3.6rem;
-      text-align: center;
+      font-family: var(--sans-font);
+      font-size: clamp(1.8rem, calc(1rem + 2vw), 3.6rem);
+      font-weight: 300;
       text-shadow: var(--box-shadow-sharp);
+      text-transform: uppercase;
+
+      svg {
+        &:not([class]) {
+          display: block;
+          height: auto;
+          width: 15em;
+          margin-top: var(--space-small);
+
+          filter: url(#shadow);
+
+          color: var(--text-special);
+        }
+
+        &.svg-shadow {
+          position: absolute;
+
+          height: 0;
+          width: 0;
+        }
+      }
+
+      .big {
+        font-size: 1.6em;
+        font-weight: 600;
+      }
+
+      .color {
+        color: var(--text-special);
+      }
 
       @media (width > 50rem) {
         text-align: left;
@@ -85,6 +119,9 @@ import bookCover from "@/assets/emie-couverture.jpg";
 
       img {
         display: block;
+
+        height: auto;
+        max-width: 30rem;
       }
     }
   }

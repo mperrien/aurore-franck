@@ -1,60 +1,107 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+import bookCover from "@/assets/emie-couverture.webp";
+---
+
 <section class="homeBook">
   <h2 class="text-center">Notre livre</h2>
   <div class="container">
-    <div class="homeBook__action">
-      <div class="homeBook__checkbox">
-        <input type="checkbox" id="flip" />
-        <label for="flip">Afficher un extrait du manuscrit ou le résumé</label>
-      </div>
-      <div
-        class="toggleOption toggleOption--excerpt js-toggle-option active"
-        id="excerpt"
-      >
-        Extrait
-      </div>
-      <div
-        class="toggleOption toggleOption--summary js-toggle-option"
-        id="summary"
-      >
-        Résumé
-      </div>
-    </div>
+    <ul class="homeBook__action list-reset js-radio-inputs">
+      <li class="homeBook__radio">
+        <input
+          type="radio"
+          id="cover"
+          name="page"
+          value="cover"
+          checked
+          class="js-radio-page"
+        />
+        <label for="cover"><span class="screen-reader-text">1</span></label>
+      </li>
+      <li class="homeBook__radio">
+        <input
+          type="radio"
+          id="excerpt"
+          name="page"
+          value="excerpt"
+          class="js-radio-page"
+        />
+        <label for="excerpt"><span class="screen-reader-text">3</span></label>
+      </li>
+      <li class="homeBook__radio">
+        <input
+          type="radio"
+          id="summary"
+          name="page"
+          value="summary"
+          class="js-radio-page"
+        />
+        <label for="summary"><span class="screen-reader-text">3</span></label>
+      </li>
+    </ul>
     <div class="bookWrapper js-wrapper">
-      <div class="book text-justify" id="book">
-        <div class="page page--excerpt js-page-front">
-          <p class="text-center">&#8544;</p>
+      <button type="button" class="button button--prev js-btn-prev">
+        <span class="screen-reader-text">Page précédente</span>
+        <Icon name="feather/chevron-left" size="2rem" />
+      </button>
+      <button type="button" class="button button--next js-btn-next">
+        <span class="screen-reader-text">Page suivante</span>
+        <Icon name="feather/chevron-right" size="2rem" />
+      </button>
+      <div class="book text-justify" id="book" style="--tr: 0;">
+        <div class="page page--cover js-page js-page-cover" style="--i: 0;">
+          <Image
+            src={bookCover}
+            widths={[540, 720, bookCover.width]}
+            sizes={`(max-width: 720px) 540px, (max-width: 1200px) 720px, ${bookCover.width}px`}
+            alt="La plage de Bon-Secours à Saint-Malo. Au premier plan, la piscine d'eau de mer avec son plongeoir. À l'arrière plan, les iles du Grand Bé et du Petit Bé. Dans la moitié supérieure de l'image, un ciel bleu sans nuage qui tire vers le rose en descendant vers l'horizon."
+          />
+        </div>
+        <div class="page page--excerpt js-page js-page-excerpt" style="--i: 1;">
+          <p class="text-center">Prélude</p>
           <p>
-            La fin de l’après-midi s’annonce pluvieuse à l’image de la semaine.
-            L’approche de l'hiver distille une morosité ambiante mais Julia et
-            Alex, à cet instant, se moquent complètement de la météo. Après des
-            heures en ville, shopping oblige, ils ont hâte de se retrouver en
-            tête à tête pour oublier la foule des magasins. Des heures en fait
-            où Alex prend un réel plaisir à observer Julia au fil des cabines
-            d’essayages.
+            L’être de Lumière me demande alors d’un ton solennel&nbsp;:<br />
+            &mdash;&nbsp;Que souhaites-tu voir maintenant&nbsp;?<br />
+            &mdash;&nbsp;Je veux le voir, lui...
           </p>
           <p>
-            L’interstice d’un rideau, le reflet dans un miroir, une bretelle de
-            dentelle rouge dévoilée... Tout est bon pour admirer le corps
-            sublime de celle qui le rend fou de désir.
+            Une chaleur réconfortante me saisit et m’enveloppe d’un amour
+            profond. Je le vois arriver. Il est là, beau et solaire comme un
+            ange... Son visage est détendu et une couleur douce et apaisante
+            irradie tout autour de lui. Je suis rassurée, il est là oui, bien
+            vivant, devant moi...
           </p>
           <p>
-            Des images sensuelles n’arrêtent pas de défiler dans son esprit
-            depuis qu’il contemple la femme de sa vie dans cette robe
-            incroyable... rouge elle aussi. Une couleur qui lui va si bien...
-            Les courbes irréelles de son corps s'harmonisent parfaitement avec
-            la finesse du tissu tandis que la profondeur de son décolleté
-            interdit de porter quoi que ce soit en dessous. À croire que
-            certaines parures n’ont été créées que pour être enlevées...
+            Je me dirige vers lui, sereine, totalement fascinée... L'énergie
+            qu’il distille est difficilement descriptible mais tout est fluide.
+            Une vibration puissante est perceptible et je vois un fil entre nous
+            deux, un fil d’or, comme si celui-ci nous unissait à tout jamais...
           </p>
           <p>
-            Seuls la décence et le regard de la vendeuse « tue l’amour » ont
-            retenu les pulsions d’Alex, plus que coquines. Malgré la chaleur et
-            l'atmosphère ambiante, les petits seins de Julia, appellent aux
-            baisers et pointent fièrement sous l’étoffe du tissu. Ses longues
-            jambes
+            Et à nouveau, comme avec l’être lumineux, aucune parole n’est
+            échangée. On se parle sous forme de pensées, un peu comme si elles
+            étaient superposées, tissant ainsi un lien profond entre nos deux
+            âmes... C'est alors que je le sens me dire&nbsp;:<br />
+            &mdash;&nbsp;Julia, tu dois reprendre confiance en la vie. Sache que
+            nous sommes à tout jamais connectés. Tu es plus forte que tu ne le crois
+            et tu as une mission sur Terre ne l’oublie pas...<br />
+            &mdash;&nbsp;Mais...<br />
+            &mdash;&nbsp;Julia, tu peux dépasser cette détresse. Tu as les clés en
+            toi.<br />
+            &mdash;&nbsp;Mais... Mais comment faire&nbsp;? Je n’y arrive pas, je
+            n’en peux plus... J’ai besoin de ta présence à mes côtés...<br />
+            &mdash;&nbsp;Julia, je suis avec toi, profondément... La mort n’est pas
+            une fin mais une renaissance. Seule la vie existe&nbsp;!<br />
+            &mdash;&nbsp;Mais comment peux-tu me dire cela&nbsp;? Je n’ai plus goût
+            à cette vie, je veux te rejoindre Alex.... Vraiment, je n’y arrive pas
+            si tu n’es plus là &nbsp;!<br />
+            &mdash;&nbsp;La force qui est en toi est incommensurable et tu dois trouver
+            les ressources pour aller de l’avant.
           </p>
         </div>
-        <div class="page page--summary js-page-back">
+        <div class="page page--summary js-page js-page-summary" style="--i: 2;">
           <h3 class="text-center">Emi(e)</h3>
           <p>
             Julia tient entre ses mains tout le bonheur possible pour une vie de
@@ -69,7 +116,7 @@
           </p>
           <p>
             Et si chaque épreuve cachait une force insoupçonnée, prouvant que
-            toute fin peut être un nouveau commencement ?
+            toute fin peut être un nouveau commencement&nbsp;?
           </p>
           <p>
             Dans ce roman singulier, ancré au cœur de la magnifique cité
@@ -93,53 +140,39 @@
         align-items: center;
         justify-content: center;
         gap: var(--space-small);
-        margin-bottom: var(--space-small);
+        margin-bottom: var(--space-medium);
 
-        .homeBook__checkbox {
+        .homeBook__radio {
           position: relative;
-          order: 2;
-
-          overflow: hidden;
-          height: 3rem;
-          width: 6rem;
 
           label {
-            &::before,
-            &::after {
+            --base: 1rem;
+
+            display: block;
+
+            color: var(--text-color);
+            cursor: pointer;
+
+            width: calc(1 * var(--base));
+
+            transition: width 0.3s ease-in-out;
+
+            &::before {
               content: "";
 
               position: absolute;
-
-              display: block;
-            }
-
-            &::before {
-              top: 0;
+              top: 100%;
               left: 0;
               z-index: 1;
 
-              height: 3rem;
-              width: 6rem;
+              display: block;
+              height: calc(1 * var(--base));
+              width: 100%;
 
-              background-color: var(--grey-300);
-              border-radius: 3rem;
+              background-color: var(--grey-400);
+              border-radius: calc(var(--base) / 2);
 
               transition: background-color 0.3s;
-            }
-
-            &::after {
-              top: 0.3rem;
-              left: 0.3rem;
-              z-index: 2;
-
-              height: 2.4rem;
-              width: 2.4rem;
-
-              border-radius: 2.4rem;
-
-              background-color: white;
-
-              transition: all 0.3s ease-in-out;
             }
           }
 
@@ -148,45 +181,22 @@
             width: 0;
 
             visibility: hidden;
-
-            &:active + label {
-              &::after {
-                width: 3.2rem;
-              }
-            }
+            display: none;
 
             &:checked + label {
+              width: calc(2 * var(--base));
+
               &::before {
                 background-color: var(--brand-blue);
               }
-
-              &::after {
-                left: calc(100% - 0.3rem);
-                transform: translateX(-100%);
-              }
             }
-          }
-        }
-
-        .toggleOption {
-          color: var(--text-color-dim);
-          font-family: var(--ui-font);
-
-          &.active {
-            color: var(--text-color);
-          }
-
-          &--excerpt {
-            order: 1;
-          }
-
-          &--summary {
-            order: 3;
           }
         }
       }
 
       .bookWrapper {
+        position: relative;
+
         margin-right: auto;
         margin-left: auto;
         max-width: 60rem;
@@ -194,32 +204,72 @@
         perspective: 99rem;
       }
 
-      .book {
-        position: relative;
+      .button {
+        position: absolute;
+        top: 50%;
 
-        transition: transform 0.5s ease-in-out;
-        transform-style: preserve-3d;
+        display: none;
+        place-content: center;
+        height: 4.8rem;
+        width: 4.8rem;
 
-        &.flipped {
-          transform: rotateY(180deg);
+        border-radius: 50%;
+        box-shadow: none;
+
+        transform: translate(0, -50%);
+
+        @media (min-width: 51.875rem) {
+          display: grid;
         }
 
-        .page {
-          position: absolute;
-          top: 0;
-          left: 0;
+        &--prev {
+          left: calc(-1 * var(--space-large));
+        }
 
+        &--next {
+          right: calc(-1 * var(--space-large));
+        }
+
+        &.hidden {
+          display: none;
+        }
+      }
+
+      .book {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-medium);
+        overflow: hidden;
+        padding: var(--space-small);
+
+        width: 100%;
+
+        .page {
+          flex: 1 0 auto;
           width: 100%;
 
-          backface-visibility: hidden;
-          background-color: white;
-          border-radius: var(--border-radius-m);
           box-shadow: var(--box-shadow-diffuse);
 
-          padding: var(--space-medium) var(--space-medium) var(--space-large);
+          transform: translateX(
+            calc(-1 * var(--tr) * (100% + var(--space-medium)))
+          );
+          transition: transform 0.3s ease-in-out;
+
+          &--cover {
+            img {
+              display: block;
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+            }
+          }
 
           &--excerpt {
             --line-height: 3rem;
+
+            padding: var(--space-small);
+
+            background-color: white;
 
             p:last-child {
               position: relative;
@@ -249,14 +299,16 @@
                 top: 100%;
 
                 text-align: center;
+
+                transform: translateY(-50%);
               }
             }
           }
 
           &--summary {
-            background-color: hsl(351, 57%, 95%);
+            padding: var(--space-small);
 
-            transform: rotateY(180deg);
+            background-color: var(--long-beach);
           }
         }
 
@@ -275,41 +327,140 @@
 </section>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const pf = document.querySelector(".js-page-front");
-    const pb = document.querySelector(".js-page-back");
-    const w = document.querySelector(".js-wrapper");
-    let fixed = false;
+  let fixed = false;
+  const controls = document.querySelectorAll(".js-radio-page");
+  const book = document.getElementById("book");
 
-    const f = document.getElementById("flip");
-    const book = document.getElementById("book");
-    const options = document.querySelectorAll(".js-toggle-option");
+  function fixHeight() {
+    if (!fixed && window.innerWidth > 830) {
+      console.log("here");
+      console.log(window.innerWidth);
+      const pc = document.querySelector(".js-page-cover");
+      const pe = document.querySelector(".js-page-excerpt");
+      const ps = document.querySelector(".js-page-summary");
+      const w = document.querySelector(".js-wrapper");
 
-    if (f && book) {
-      f.addEventListener("change", () => {
-        if (pf && pb && !fixed) {
-          const pfh = (pf as HTMLElement).offsetHeight;
-          const pbh = (pb as HTMLElement).offsetHeight;
+      if (pc && pe && ps) {
+        const pch = (pc as HTMLElement).offsetHeight;
+        const peh = (pe as HTMLElement).offsetHeight;
+        const psh = (ps as HTMLElement).offsetHeight;
 
-          if (pfh > pbh) {
-            (pb as HTMLElement).style.height = `${pfh}px`;
-          } else if (pbh > pfh) {
-            (pf as HTMLElement).style.height = `${pbh}px`;
-          }
+        const max = Math.max(pch, peh, psh);
+        (pc as HTMLElement).style.height = `${max}px`;
+        (pe as HTMLElement).style.height = `${max}px`;
+        (ps as HTMLElement).style.height = `${max}px`;
+        (w as HTMLElement).style.height = `${max}px`;
 
-          (w as HTMLElement).style.height = `${Math.max(pfh, pbh)}px`;
-
-          fixed = true;
-        }
-
-        book.classList.toggle("flipped");
-
-        if (options) {
-          options.forEach((o) => {
-            o.classList.toggle("active");
-          });
-        }
-      });
+        fixed = true;
+      }
+    } else {
+      const pc = document.querySelector(".js-page-cover");
+      const pe = document.querySelector(".js-page-excerpt");
+      const ps = document.querySelector(".js-page-summary");
+      const w = document.querySelector(".js-wrapper");
+      (pc as HTMLElement).style.height = "";
+      (pe as HTMLElement).style.height = "";
+      (ps as HTMLElement).style.height = "";
+      (w as HTMLElement).style.height = "";
     }
+  }
+
+  function goToPage(p: "prev" | "next") {
+    let currentPage = book?.style.getPropertyValue("--tr");
+    if (!currentPage) {
+      currentPage = "0";
+    }
+    let newPage: number = parseInt(currentPage);
+    if (p === "prev") {
+      newPage = (newPage + 2) % 3;
+    } else if (p === "next") {
+      newPage = (newPage + 1) % 3;
+    }
+    (controls[newPage] as HTMLInputElement).checked = true;
+    book!.style.setProperty("--tr", newPage.toString());
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    controls.forEach((c) => {
+      c.addEventListener("change", () => {
+        const input = c as HTMLInputElement;
+
+        const p = input.value;
+        if (p === "cover") {
+          book!.style.setProperty("--tr", "0");
+        } else if (p === "excerpt") {
+          book!.style.setProperty("--tr", "1");
+        } else if (p === "summary") {
+          book!.style.setProperty("--tr", "2");
+        }
+        fixHeight();
+      });
+    });
+
+    const btnPrev = document.querySelector(".js-btn-prev");
+    const btnNext = document.querySelector(".js-btn-next");
+
+    btnPrev?.addEventListener("click", () => {
+      fixHeight();
+      goToPage("prev");
+    });
+    btnNext?.addEventListener("click", () => {
+      fixHeight();
+      goToPage("next");
+    });
   });
+
+  window.addEventListener("resize", () => {
+    fixed = false;
+    fixHeight();
+  });
+
+  // Handle swipes
+  let xDown: number | null = null;
+  let yDown: number | null = null;
+
+  function getTouches(e: TouchEvent) {
+    return e.touches;
+  }
+
+  function handleTouchStart(e: TouchEvent) {
+    const firstTouch = getTouches(e)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+  }
+
+  function handleTouchMove(e: TouchEvent) {
+    if (!xDown || !yDown) {
+      return;
+    }
+
+    console.log(e);
+    var xUp = e.changedTouches[0].clientX;
+    var yUp = e.changedTouches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      /*most significant*/
+      if (xDiff > 0) {
+        /* right swipe */
+        goToPage("next");
+      } else {
+        /* left swipe */
+        goToPage("prev");
+      }
+    } else {
+      if (yDiff > 0) {
+        /* down swipe */
+      } else {
+        /* up swipe */
+      }
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;
+  }
+  book!.addEventListener("touchstart", handleTouchStart);
+  book!.addEventListener("touchend", handleTouchMove);
 </script>

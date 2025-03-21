@@ -1,7 +1,7 @@
-<section class="homeBook">
-  <h2 class="text-center">Notre livre</h2>
-  <div class="bookWrapper container">
-    <div class="book text-justify">
+<section class="homeProject">
+  <h2 class="text-center">...à la naissance d'un projet</h2>
+  <div class="bookWrapper container container--mini">
+    <div class="book text-justif">
       <p>
         13h20. Un après-midi de juillet sur la plage des Bas-Sablons à
         Saint-Malo.
@@ -30,7 +30,7 @@
       <p class="dialog">&mdash;&nbsp;C’est vrai&nbsp;...</p>
       <p class="dialog">&mdash;&nbsp;Allez chiche, on se lance&nbsp;?</p>
       <p class="dialog">&mdash;&nbsp;OK, chiche.&nbsp;&raquo;</p>
-      <p>9 mois plus tard.</p>
+      <p>8 mois plus tard.</p>
       <p class="dialog">&laquo;&nbsp;Franck&nbsp;?</p>
       <p class="dialog">&mdash;&nbsp;Oui&nbsp;?</p>
       <p class="dialog">&mdash;&nbsp;Je crois bien qu’on a fini.</p>
@@ -86,68 +86,74 @@
 </section>
 
 <style lang="scss">
-  .homeBook {
+  .homeProject {
+    background-color: white;
+
     .bookWrapper {
       position: relative;
 
-      max-width: 110rem;
+      // max-width: 80rem;
 
-      &::before,
-      &::after {
-        position: absolute;
-        bottom: var(--space-medium);
-        z-index: 3;
+      // &::before,
+      // &::after {
+      //   position: absolute;
+      //   bottom: var(--space-medium);
+      //   z-index: 3;
 
-        display: block;
+      //   display: block;
 
-        transform: translate(-50%, 50%);
-      }
+      //   transform: translate(-50%, 50%);
+      // }
 
-      &::before {
-        content: "4";
+      // &::before {
+      //   content: "4";
 
-        left: 50%;
-      }
+      //   left: 50%;
+      // }
 
-      @media (width > 60rem) {
-        &::before {
-          left: 25%;
-        }
+      // @media (width > 60rem) {
+      //   &::before {
+      //     left: 25%;
+      //   }
 
-        &::after {
-          content: "5";
+      //   &::after {
+      //     content: "5";
 
-          left: 75%;
-        }
-      }
+      //     left: 75%;
+      //   }
+      // }
     }
 
     .book {
       position: relative;
 
-      padding: var(--space-medium) var(--space-medium) var(--space-large);
+      // padding: var(--space-medium);
 
-      background-color: white;
-      border-radius: var(--border-radius-m);
-      box-shadow: var(--box-shadow-diffuse);
+      // background-color: white;
+      // border-radius: var(--border-radius-m);
+      // box-shadow: var(--box-shadow-diffuse);
 
       @media (width > 60rem) {
-        column-count: 2;
-        column-gap: var(--space-large);
+        // column-count: 2;
+        // column-gap: var(--space-large);
 
-        &::before {
-          content: "";
+        // &::before {
+        //   content: "";
 
-          position: absolute;
-          top: 0;
-          left: 50%;
+        //   position: absolute;
+        //   top: 0;
+        //   left: 50%;
 
-          display: block;
-          height: 100%;
-          width: 0.1rem;
+        //   display: block;
+        //   height: 100%;
+        //   width: 0.1rem;
 
-          background-color: var(--grey-200);
-        }
+        //   background-color: var(--grey-200);
+        // }
+      }
+
+      @media (width > 80rem) {
+        // column-count: 3;
       }
 
       p {
