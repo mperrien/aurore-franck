@@ -17,7 +17,6 @@ import bookCover from "@/assets/emie-couverture.webp";
         />
       </div>
       <div class="bookCover__back">
-        <h3 class="text-center">Emi(e)</h3>
         <p>
           Julia tient entre ses mains tout le bonheur possible pour une vie de
           rêve lorsque le drame s'abat sur elle avec violence.
@@ -43,57 +42,61 @@ import bookCover from "@/assets/emie-couverture.webp";
     </div>
   </div>
   <div class="bookPrelude">
-    <p class="text-center">Prélude</p>
-    <p>
-      L’être de Lumière me demande alors d’un ton solennel&nbsp;:<br />
-      &mdash;&nbsp;Que souhaites-tu voir maintenant&nbsp;?<br />
-      &mdash;&nbsp;Je veux le voir, lui...
-    </p>
-    <p>
-      Une chaleur réconfortante me saisit et m’enveloppe d’un amour profond. Je
-      le vois arriver. Il est là, beau et solaire comme un ange... Son visage
-      est détendu et une couleur douce et apaisante irradie tout autour de lui.
-      Je suis rassurée, il est là oui, bien vivant, devant moi...
-    </p>
-    <p>
-      Je me dirige vers lui, sereine, totalement fascinée... L'énergie qu’il
-      distille est difficilement descriptible mais tout est fluide. Une
-      vibration puissante est perceptible et je vois un fil entre nous deux, un
-      fil d’or, comme si celui-ci nous unissait à tout jamais...
-    </p>
-    <p>
-      Et à nouveau, comme avec l’être lumineux, aucune parole n’est échangée. On
-      se parle sous forme de pensées, un peu comme si elles étaient superposées,
-      tissant ainsi un lien profond entre nos deux âmes... C'est alors que je le
-      sens me dire&nbsp;:<br />
-      &mdash;&nbsp;Julia, tu dois reprendre confiance en la vie. Sache que nous sommes
-      à tout jamais connectés. Tu es plus forte que tu ne le crois et tu as une mission
-      sur Terre ne l’oublie pas...<br />
-      &mdash;&nbsp;Mais...<br />
-      &mdash;&nbsp;Julia, tu peux dépasser cette détresse. Tu as les clés en toi.<br
-      />
-      &mdash;&nbsp;Mais... Mais comment faire&nbsp;? Je n’y arrive pas, je n’en peux
-      plus... J’ai besoin de ta présence à mes côtés...<br />
-      &mdash;&nbsp;Julia, je suis avec toi, profondément... La mort n’est pas une
-      fin mais une renaissance. Seule la vie existe&nbsp;!<br />
-      &mdash;&nbsp;Mais comment peux-tu me dire cela&nbsp;? Je n’ai plus goût à cette
-      vie, je veux te rejoindre Alex.... Vraiment, je n’y arrive pas si tu n’es plus
-      là &nbsp;!<br />
-      &mdash;&nbsp;La force qui est en toi est incommensurable et tu dois trouver
-      les ressources pour aller de l’avant.
-    </p>
+    <div class="bookPrelude__content container container--mini">
+      <p class="text-center">Prélude</p>
+      <p>
+        L’être de Lumière me demande alors d’un ton solennel&nbsp;:<br />
+        &mdash;&nbsp;Que souhaites-tu voir maintenant&nbsp;?<br />
+        &mdash;&nbsp;Je veux le voir, lui...
+      </p>
+      <p>
+        Une chaleur réconfortante me saisit et m’enveloppe d’un amour profond.
+        Je le vois arriver. Il est là, beau et solaire comme un ange... Son
+        visage est détendu et une couleur douce et apaisante irradie tout autour
+        de lui. Je suis rassurée, il est là oui, bien vivant, devant moi...
+      </p>
+      <p>
+        Je me dirige vers lui, sereine, totalement fascinée... L'énergie qu’il
+        distille est difficilement descriptible mais tout est fluide. Une
+        vibration puissante est perceptible et je vois un fil entre nous deux,
+        un fil d’or, comme si celui-ci nous unissait à tout jamais...
+      </p>
+      <p>
+        Et à nouveau, comme avec l’être lumineux, aucune parole n’est échangée.
+        On se parle sous forme de pensées, un peu comme si elles étaient
+        superposées, tissant ainsi un lien profond entre nos deux âmes... C'est
+        alors que je le sens me dire&nbsp;:<br />
+        &mdash;&nbsp;Julia, tu dois reprendre confiance en la vie. Sache que nous
+        sommes à tout jamais connectés. Tu es plus forte que tu ne le crois et tu
+        as une mission sur Terre ne l’oublie pas...<br />
+        &mdash;&nbsp;Mais...<br />
+        &mdash;&nbsp;Julia, tu peux dépasser cette détresse. Tu as les clés en toi.<br
+        />
+        &mdash;&nbsp;Mais... Mais comment faire&nbsp;? Je n’y arrive pas, je n’en
+        peux plus... J’ai besoin de ta présence à mes côtés...<br />
+        &mdash;&nbsp;Julia, je suis avec toi, profondément... La mort n’est pas une
+        fin mais une renaissance. Seule la vie existe&nbsp;!<br />
+        &mdash;&nbsp;Mais comment peux-tu me dire cela&nbsp;? Je n’ai plus goût à
+        cette vie, je veux te rejoindre Alex.... Vraiment, je n’y arrive pas si tu
+        n’es plus là &nbsp;!<br />
+        &mdash;&nbsp;La force qui est en toi est incommensurable et tu dois trouver
+        les ressources pour aller de l’avant.
+      </p>
+    </div>
   </div>
 </section>
 
 <style lang="scss">
   .homeBook {
-    // padding-top: 0;
+    padding-bottom: 0;
 
     h2 {
       margin-bottom: var(--space-large);
     }
 
     .bookCover {
+      position: relative;
+      z-index: 2;
       // background: linear-gradient(
       //   to right,
       //   transparent,
@@ -128,6 +131,35 @@ import bookCover from "@/assets/emie-couverture.webp";
         // padding-right: 0;
 
         background-color: var(--long-beach);
+
+        text-align: justify;
+      }
+    }
+
+    .bookPrelude {
+      position: relative;
+      z-index: 1;
+
+      padding-top: calc(2 * var(--space-large));
+      padding-bottom: calc(2 * var(--space-large));
+
+      background-color: white;
+
+      text-align: justify;
+
+      &::before {
+        content: "";
+
+        position: absolute;
+        top: -20vw;
+        left: 0;
+
+        display: block;
+        height: 20vw;
+        width: 100vw;
+
+        background-color: white;
+        clip-path: polygon(0 100%, 100% 0, 100% 100%);
       }
     }
   }
