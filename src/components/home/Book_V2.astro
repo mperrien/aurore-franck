@@ -7,37 +7,39 @@ import bookCover from "@/assets/emie-couverture.webp";
 <section class="homeBook">
   <h2 class="text-center">Notre livre</h2>
   <div class="bookCover">
-    <div class="container">
-      <div class="bookCover__front">
-        <Image
-          src={bookCover}
-          widths={[540, 720, bookCover.width]}
-          sizes={`(max-width: 720px) 540px, (max-width: 1200px) 720px, ${bookCover.width}px`}
-          alt="La plage de Bon-Secours à Saint-Malo. Au premier plan, la piscine d'eau de mer avec son plongeoir. À l'arrière plan, les iles du Grand Bé et du Petit Bé. Dans la moitié supérieure de l'image, un ciel bleu sans nuage qui tire vers le rose en descendant vers l'horizon."
-        />
-      </div>
-      <div class="bookCover__back">
-        <p>
-          Julia tient entre ses mains tout le bonheur possible pour une vie de
-          rêve lorsque le drame s'abat sur elle avec violence.
-        </p>
-        <p>
-          Brisée, submergée par la colère, la culpabilité et la peur, elle se
-          noie dans une douleur sans fond. Rien ne semble pouvoir l'arracher à
-          ce gouffre, pas même son frère Erick, urgentiste, qui lutte
-          désespérément pour la sauver. Mais alors qu'elle a perdu tout espoir,
-          des événements inattendus bouleverseront son existence.
-        </p>
-        <p>
-          Et si chaque épreuve cachait une force insoupçonnée, prouvant que
-          toute fin peut être un nouveau commencement&nbsp;?
-        </p>
-        <p>
-          Dans ce roman singulier, ancré au cœur de la magnifique cité corsaire
-          de Saint-Malo, l'histoire nous rappelle que, même au cœur du chaos,
-          l'amour trouve toujours un chemin.
-        </p>
-        <p class="text-center">&#8258;</p>
+    <div class="bookCover__wrapper">
+      <div>
+        <div class="bookCover__front">
+          <Image
+            src={bookCover}
+            widths={[540, 720, bookCover.width]}
+            sizes={`(max-width: 720px) 540px, (max-width: 1200px) 720px, ${bookCover.width}px`}
+            alt="La plage de Bon-Secours à Saint-Malo. Au premier plan, la piscine d'eau de mer avec son plongeoir. À l'arrière plan, les iles du Grand Bé et du Petit Bé. Dans la moitié supérieure de l'image, un ciel bleu sans nuage qui tire vers le rose en descendant vers l'horizon."
+          />
+        </div>
+        <div class="bookCover__back">
+          <p>
+            Julia tient entre ses mains tout le bonheur possible pour une vie de
+            rêve lorsque le drame s'abat sur elle avec violence.
+          </p>
+          <p>
+            Brisée, submergée par la colère, la culpabilité et la peur, elle se
+            noie dans une douleur sans fond. Rien ne semble pouvoir l'arracher à
+            ce gouffre, pas même son frère Erick, urgentiste, qui lutte
+            désespérément pour la sauver. Mais alors qu'elle a perdu tout
+            espoir, des événements inattendus bouleverseront son existence.
+          </p>
+          <p>
+            Et si chaque épreuve cachait une force insoupçonnée, prouvant que
+            toute fin peut être un nouveau commencement&nbsp;?
+          </p>
+          <p>
+            Dans ce roman singulier, ancré au cœur de la magnifique cité
+            corsaire de Saint-Malo, l'histoire nous rappelle que, même au cœur
+            du chaos, l'amour trouve toujours un chemin.
+          </p>
+          <p class="text-center">&#8258;</p>
+        </div>
       </div>
     </div>
   </div>
@@ -97,23 +99,24 @@ import bookCover from "@/assets/emie-couverture.webp";
     .bookCover {
       position: relative;
       z-index: 2;
-      // background: linear-gradient(
-      //   to right,
-      //   transparent,
-      //   transparent 50%,
-      //   var(--long-beach) 50%,
-      //   var(--long-beach)
-      // );
 
-      > .container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
-        // align-items: center;
-        padding: 0;
-        overflow: hidden;
+      &__wrapper {
+        margin: 0 auto;
+        padding: 0 var(--space-small);
+        max-width: 40rem;
 
-        border-radius: var(--border-radius-m);
-        box-shadow: var(--box-shadow-diffuse);
+        @media (min-width: 60rem) {
+          max-width: 110rem;
+        }
+
+        > div {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+          overflow: hidden;
+
+          border-radius: var(--border-radius-m);
+          box-shadow: var(--box-shadow-diffuse);
+        }
       }
 
       &__front {
@@ -128,7 +131,6 @@ import bookCover from "@/assets/emie-couverture.webp";
         flex-direction: column;
         justify-content: center;
         padding: var(--space-medium);
-        // padding-right: 0;
 
         background-color: var(--long-beach);
 
