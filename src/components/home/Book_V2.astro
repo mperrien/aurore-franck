@@ -1,0 +1,168 @@
+---
+import { Image } from "astro:assets";
+
+import bookCover from "@/assets/emie-couverture.webp";
+---
+
+<section class="homeBook">
+  <h2 class="text-center">Notre livre</h2>
+  <div class="bookCover">
+    <div class="bookCover__wrapper">
+      <div>
+        <div class="bookCover__front">
+          <Image
+            src={bookCover}
+            widths={[540, 720, bookCover.width]}
+            sizes={`(max-width: 720px) 540px, (max-width: 1200px) 720px, ${bookCover.width}px`}
+            alt="La plage de Bon-Secours à Saint-Malo. Au premier plan, la piscine d'eau de mer avec son plongeoir. À l'arrière plan, les iles du Grand Bé et du Petit Bé. Dans la moitié supérieure de l'image, un ciel bleu sans nuage qui tire vers le rose en descendant vers l'horizon."
+          />
+        </div>
+        <div class="bookCover__back">
+          <p>
+            Julia tient entre ses mains tout le bonheur possible pour une vie de
+            rêve lorsque le drame s'abat sur elle avec violence.
+          </p>
+          <p>
+            Brisée, submergée par la colère, la culpabilité et la peur, elle se
+            noie dans une douleur sans fond. Rien ne semble pouvoir l'arracher à
+            ce gouffre, pas même son frère Erick, urgentiste, qui lutte
+            désespérément pour la sauver. Mais alors qu'elle a perdu tout
+            espoir, des événements inattendus bouleverseront son existence.
+          </p>
+          <p>
+            Et si chaque épreuve cachait une force insoupçonnée, prouvant que
+            toute fin peut être un nouveau commencement&nbsp;?
+          </p>
+          <p>
+            Dans ce roman singulier, ancré au cœur de la magnifique cité
+            corsaire de Saint-Malo, l'histoire nous rappelle que, même au cœur
+            du chaos, l'amour trouve toujours un chemin.
+          </p>
+          <p class="text-center">&#8258;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bookPrelude">
+    <div class="bookPrelude__content container container--mini">
+      <p class="text-center">Prélude</p>
+      <p>
+        L’être de Lumière me demande alors d’un ton solennel&nbsp;:<br />
+        &mdash;&nbsp;Que souhaites-tu voir maintenant&nbsp;?<br />
+        &mdash;&nbsp;Je veux le voir, lui...
+      </p>
+      <p>
+        Une chaleur réconfortante me saisit et m’enveloppe d’un amour profond.
+        Je le vois arriver. Il est là, beau et solaire comme un ange... Son
+        visage est détendu et une couleur douce et apaisante irradie tout autour
+        de lui. Je suis rassurée, il est là oui, bien vivant, devant moi...
+      </p>
+      <p>
+        Je me dirige vers lui, sereine, totalement fascinée... L'énergie qu’il
+        distille est difficilement descriptible mais tout est fluide. Une
+        vibration puissante est perceptible et je vois un fil entre nous deux,
+        un fil d’or, comme si celui-ci nous unissait à tout jamais...
+      </p>
+      <p>
+        Et à nouveau, comme avec l’être lumineux, aucune parole n’est échangée.
+        On se parle sous forme de pensées, un peu comme si elles étaient
+        superposées, tissant ainsi un lien profond entre nos deux âmes... C'est
+        alors que je le sens me dire&nbsp;:<br />
+        &mdash;&nbsp;Julia, tu dois reprendre confiance en la vie. Sache que nous
+        sommes à tout jamais connectés. Tu es plus forte que tu ne le crois et tu
+        as une mission sur Terre ne l’oublie pas...<br />
+        &mdash;&nbsp;Mais...<br />
+        &mdash;&nbsp;Julia, tu peux dépasser cette détresse. Tu as les clés en toi.<br
+        />
+        &mdash;&nbsp;Mais... Mais comment faire&nbsp;? Je n’y arrive pas, je n’en
+        peux plus... J’ai besoin de ta présence à mes côtés...<br />
+        &mdash;&nbsp;Julia, je suis avec toi, profondément... La mort n’est pas une
+        fin mais une renaissance. Seule la vie existe&nbsp;!<br />
+        &mdash;&nbsp;Mais comment peux-tu me dire cela&nbsp;? Je n’ai plus goût à
+        cette vie, je veux te rejoindre Alex.... Vraiment, je n’y arrive pas si tu
+        n’es plus là &nbsp;!<br />
+        &mdash;&nbsp;La force qui est en toi est incommensurable et tu dois trouver
+        les ressources pour aller de l’avant.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .homeBook {
+    padding-bottom: 0;
+
+    h2 {
+      margin-bottom: var(--space-large);
+    }
+
+    .bookCover {
+      position: relative;
+      z-index: 2;
+
+      &__wrapper {
+        margin: 0 auto;
+        padding: 0 var(--space-small);
+        max-width: 40rem;
+
+        @media (min-width: 60rem) {
+          max-width: 110rem;
+        }
+
+        > div {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+          overflow: hidden;
+
+          border-radius: var(--border-radius-m);
+          box-shadow: var(--box-shadow-diffuse);
+        }
+      }
+
+      &__front {
+        img {
+          display: block;
+          height: auto;
+        }
+      }
+
+      &__back {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: var(--space-medium);
+
+        background-color: var(--long-beach);
+
+        text-align: justify;
+      }
+    }
+
+    .bookPrelude {
+      position: relative;
+      z-index: 1;
+
+      padding-top: calc(2 * var(--space-large));
+      padding-bottom: calc(2 * var(--space-large));
+
+      background-color: white;
+
+      text-align: justify;
+
+      &::before {
+        content: "";
+
+        position: absolute;
+        top: -20vw;
+        left: 0;
+
+        display: block;
+        height: 20vw;
+        width: 100vw;
+
+        background-color: white;
+        clip-path: polygon(0 100%, 100% 0, 100% 100%);
+      }
+    }
+  }
+</style>
