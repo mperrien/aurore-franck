@@ -2,7 +2,8 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
-import heroImage from "@/assets/sebastien-g-3gYsVLaw5Fo-unsplash.webp";
+// import heroImage from "@/assets/sebastien-g-3gYsVLaw5Fo-unsplash.webp";
+import heroImage from "@/assets/stevens-gardenbreche.webp";
 ---
 
 <section class="homeHero">
@@ -39,7 +40,7 @@ import heroImage from "@/assets/sebastien-g-3gYsVLaw5Fo-unsplash.webp";
 
 <style lang="scss">
   .homeHero {
-    --text-special: var(--macaroni);
+    --text-special: var(--olive-leaf);
 
     position: relative;
     min-height: 70vh;
@@ -53,10 +54,20 @@ import heroImage from "@/assets/sebastien-g-3gYsVLaw5Fo-unsplash.webp";
       width: 100%;
 
       img {
+        position: absolute;
+        top: 0;
+        right: 0;
+
         display: block;
         height: 100%;
-        width: 100%;
+        width: auto;
         object-fit: cover;
+        max-width: unset;
+
+        @media (width > 70rem) {
+          position: relative;
+          width: 100%;
+        }
       }
     }
 
@@ -66,8 +77,13 @@ import heroImage from "@/assets/sebastien-g-3gYsVLaw5Fo-unsplash.webp";
 
       display: flex;
       align-items: center;
-      padding-top: var(--space-large);
-      padding-bottom: var(--space-large);
+      padding-top: calc(var(--space-large) + 12rem);
+      padding-bottom: calc(var(--space-large) - 12rem);
+
+      @media (width > 50rem) {
+        padding-top: var(--space-large);
+        padding-bottom: var(--space-large);
+      }
     }
 
     h1 {
@@ -75,8 +91,12 @@ import heroImage from "@/assets/sebastien-g-3gYsVLaw5Fo-unsplash.webp";
       font-family: var(--sans-font);
       font-size: clamp(1.8rem, calc(1rem + 2vw), 3.6rem);
       font-weight: 300;
-      text-shadow: var(--box-shadow-sharp);
+      text-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.8);
       text-transform: uppercase;
+
+      @media (width > 70rem) {
+        padding-left: 20vw;
+      }
 
       svg {
         &:not([class]) {
@@ -101,6 +121,7 @@ import heroImage from "@/assets/sebastien-g-3gYsVLaw5Fo-unsplash.webp";
       .big {
         font-size: 1.6em;
         font-weight: 600;
+        text-shadow: var(--box-shadow-sharp);
       }
 
       .color {
