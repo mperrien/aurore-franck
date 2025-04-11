@@ -31,12 +31,15 @@ if (!images[`/src/assets/${author.image}`])
 <style lang="scss">
   .author {
     overflow: hidden;
+    width: 100%;
+    max-width: 56rem;
 
     background-color: white;
     border-radius: var(--border-radius-m);
     box-shadow: var(--box-shadow-diffuse);
 
     &__image {
+      aspect-ratio: 1;
 
       img {
         display: block;
