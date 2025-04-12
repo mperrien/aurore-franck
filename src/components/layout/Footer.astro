@@ -9,7 +9,7 @@
 <style lang="scss">
   .footer {
     margin-top: auto;
-    padding-top: var(--space-small);
+    padding-top: var(--space-large);
     padding-bottom: var(--space-medium);
 
     font-family: var(--ui-font);
@@ -17,6 +17,11 @@
     &__links {
       display: flex;
       justify-content: center;
+      text-align: center;
+
+      li {
+        list-style: none;
+      }
 
       a {
         color: var(--grey-500);
