@@ -35,6 +35,13 @@ import heroImage from "@/assets/stevens-gardenbreche.webp";
       sizes={`(max-width: 720px) 540px, (max-width: 1200px) 720px,(max-width: 1600px) 1200px, ${heroImage.width}px`}
       alt="La plage de Bon-Secours à Saint-Malo. Au premier plan, la piscine d'eau de mer avec son plongeoir. À l'arrière plan, les iles du Grand Bé et du Petit Bé. Dans la moitié supérieure de l'image, un ciel bleu sans nuage qui tire vers le rose en descendant vers l'horizon."
     />
+    <span class="homeHero__credit">
+      Photographies : <a
+        href="https://pascalhelleu.com"
+        target="_blank"
+        rel="noopener noreferer">Pascal Helleu</a
+      >
+    </span>
   </div>
 </section>
 
@@ -71,6 +78,20 @@ import heroImage from "@/assets/stevens-gardenbreche.webp";
       }
     }
 
+    &__credit {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+
+      padding: 0 0.6rem;
+
+      background-color: rgba(0, 0, 0, 0.3);
+
+      color: white;
+      font-family: var(--ui-font);
+      font-size: 1.6rem;
+    }
+
     &__content {
       position: relative;
       z-index: 2;
@@ -81,6 +102,7 @@ import heroImage from "@/assets/stevens-gardenbreche.webp";
       padding-bottom: calc(var(--space-large) - 12rem);
 
       @media (width > 50rem) {
+        padding-top: calc(var(--space-large) - 7rem);
         padding-top: var(--space-large);
         padding-bottom: var(--space-large);
       }
