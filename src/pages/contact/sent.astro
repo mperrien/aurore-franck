@@ -1,0 +1,31 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import "@/styles/pages/_contact.scss";
+---
+
+<Layout
+  title="Votre message a été envoyé"
+  description="Nous envoyer un message"
+>
+  <main class="page contact container">
+    <header class="contact__header">
+      <h1>Discutons&nbsp;!</h1>
+      <p>
+        Si vous avez aimé notre manuscrit et que vous souhaitez échanger avec,
+        envoyez-nous un message.
+      </p>
+    </header>
+    <div class="contact__content">
+      <div>
+        <h2>Merci</h2>
+        <p>Votre message a bien été envoyé.</p>
+        <p>
+          <a href="/" class="button button--primary"
+            >Retourner à la page d'accueil</a
+          >
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>

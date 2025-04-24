@@ -1,0 +1,48 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import "@/styles/pages/_contact.scss";
+---
+
+<Layout title="Contact" description="Nous envoyer un message">
+  <main class="page contact container">
+    <header class="contact__header">
+      <h1>Discutons&nbsp;!</h1>
+      <p>
+        Si vous avez aimé notre manuscrit et que vous souhaitez échanger,
+        envoyez-nous un message.
+      </p>
+    </header>
+    <div class="contact__content">
+      <form
+        class="form"
+        name="contact"
+        action="/contact/sent/"
+        method="POST"
+        data-netlify="true"
+      >
+        <p class="inputWrapper">
+          <label for="name">
+            Votre nom <span class="required">(Obligatoire)</span>
+          </label>
+          <input type="text" name="name" id="name" required />
+        </p>
+        <p class="inputWrapper">
+          <label for="email">
+            Votre email <span class="required">(Obligatoire)</span>
+          </label>
+          <input type="email" name="email" id="email" />
+        </p>
+        <p class="inputWrapper">
+          <label for="message">
+            Message <span class="required">(Obligatoire)</span>
+          </label>
+          <textarea name="message" id="message" rows="5" required></textarea>
+        </p>
+        <p class="inputWrapper">
+          <button type="submit" class="button button--primary">Envoyer</button>
+        </p>
+      </form>
+    </div>
+  </main>
+</Layout>
