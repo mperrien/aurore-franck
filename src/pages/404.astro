@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import "@/styles/pages/_error.scss";
+---
+
+<Layout title="Erreur 404" description="La page recherchée n'existe pas.">
+  <main class="page error">
+    <div class="error__content">
+      <div>
+        <p>Nous avons perdu cette page.</p>
+        <p>Mais nous en avons beaucoup d'autres à vous faire découvrir.</p>
+        <p>
+          <a href="/">Retourner à l'accueil</a> ou <a href="/contact/"
+            >Envoyer un message</a
+          >
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>
