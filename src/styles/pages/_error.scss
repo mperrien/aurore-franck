@@ -95,8 +95,8 @@
       padding-bottom: var(--space-small);
     }
 
-    a:not([class]):visited {
-      color: var(--orange);
+    a:not([class]) {
+      text-decoration: underline;
     }
   }
 }
