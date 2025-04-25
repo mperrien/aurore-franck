@@ -24,6 +24,14 @@ if (!images[`/src/assets/${author.image}`])
 <article class="author">
   <div class="author__image">
     <Image src={images[`/src/assets/${author.image}`]()} alt={author.name} />
+    <a
+      href="https://www.pascalhelleu.com/"
+      class="author__image-copyright"
+      target="_blank"
+      rel="noopener"
+    >
+    Photographe : Pascal Helleu
+    </a>
   </div>
   <div class="author__content" set:html={author.content} />
 </article>
@@ -38,6 +46,7 @@ if (!images[`/src/assets/${author.image}`])
     box-shadow: var(--box-shadow-diffuse);
 
     &__image {
+      position: relative;
       aspect-ratio: 1;
 
       img {
@@ -45,6 +54,29 @@ if (!images[`/src/assets/${author.image}`])
         height: 100%;
         width: 100%;
         object-fit: cover;
+      }
+
+      &-copyright {
+        position: absolute;
+        bottom: var(--space-small);
+        right: var(--space-small);
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        font-size: 1.5rem;
+        line-height: 1.7;
+        text-decoration: none;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      &:hover {
+        .author__image-copyright {
+          opacity: 1;
+          pointer-events: auto;
+        }
       }
     }
 
